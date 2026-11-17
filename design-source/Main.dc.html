@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Tea Collective — Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap">
+<style>
+/* The Tea Collective — design tokens
+   forest #465B49 (primary, 6.6:1 on cream) · sage #A8B5A0 · cream #F7F3E9 · oat #E8DDC9 · tea brown #806B54
+   botanical #303B32 (text, 10.5:1) · soft white #FCFAF5 · terracotta #B8755B (decorative only)
+   text-safe variants: brown #6E5A45 (4.9:1 on oat) · terracotta #9A5A43 (4.8:1 on cream) · terracotta on dark #D9A58E */
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F3E9;color:#303B32;font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#303B32}a:hover{color:#465B49}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid #465B49;outline-offset:3px}
+.on-forest :focus-visible,.on-dark :focus-visible{outline-color:#F7F3E9}
+.skip{position:absolute;left:-9999px;top:10px;z-index:100;background:#465B49;color:#F7F3E9;padding:12px 18px;text-decoration:none;font-weight:600}
+.skip:focus{left:10px;color:#F7F3E9}
+.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-0.01em}
+.disp{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:.98;letter-spacing:-0.02em;margin:0}
+.disp em,.h2 em{font-style:italic;color:#465B49}
+.on-forest .disp em,.on-forest .h2 em,.on-dark .disp em,.on-dark .h2 em{color:#E8DDC9}
+.h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.02;letter-spacing:-0.015em;font-size:clamp(38px,4.6vw,68px);margin:14px 0 0}
+.h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.1;margin:0}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px)}
+.label{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E5A45}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E5A45}
+.eyebrow::before{content:"";width:28px;height:1px;background:#B8755B;flex:none}
+.on-forest .eyebrow,.on-dark .eyebrow,.eyebrow.light{color:#E8DDC9}
+.lead{font-size:clamp(16px,1.2vw,18px);line-height:1.75;color:#4A5249}
+.on-forest .lead,.on-dark .lead{color:#E3E6DC}
+.hint{font-size:14px;line-height:1.6;color:#5C6158}
+.on-forest{background:#465B49;color:#F7F3E9}
+.on-dark{background:#303B32;color:#F7F3E9}
+.on-forest a,.on-dark a{color:#F7F3E9}
+.oat{background:#E8DDC9}
+.oat .label,.oat .eyebrow{color:#6E5A45}
+.soft{background:#FCFAF5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;background:#465B49;color:#F7F3E9;border:1px solid #465B49;border-radius:2px;font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease}
+.btn:hover{background:#303B32;border-color:#303B32;color:#F7F3E9}
+.btn:disabled{opacity:.6;cursor:progress}
+.btn-ghost{background:transparent;color:#303B32;border-color:#303B32}
+.btn-ghost:hover{background:#303B32;color:#F7F3E9}
+.btn-light{background:#F7F3E9;color:#303B32;border-color:#F7F3E9}
+.btn-light:hover{background:#E8DDC9;border-color:#E8DDC9;color:#303B32}
+.btn-ghost-light{background:transparent;color:#F7F3E9;border-color:rgba(247,243,233,.7)}
+.btn-ghost-light:hover{background:#F7F3E9;color:#303B32;border-color:#F7F3E9}
+.arr{display:inline-block;transition:transform .35s ease}
+.btn:hover .arr,.tlink:hover .arr{transform:translateX(4px)}
+.tlink{display:inline-flex;align-items:center;gap:10px;min-height:44px;font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#303B32;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/100% 1px no-repeat;transition:background-size .4s ease}
+.tlink:hover{background-size:40% 1px;color:#465B49}
+.on-forest .tlink,.on-dark .tlink{color:#F7F3E9}
+.nav-link{position:relative;text-decoration:none;color:#303B32;font-size:14px;font-weight:500;letter-spacing:.04em;padding:12px 2px;min-height:44px;display:inline-flex;align-items:center}
+.nav-link::after{content:"";position:absolute;left:2px;right:2px;bottom:8px;height:1px;background:#465B49;transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.nav-link:hover::after,.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+.nav-link[aria-current="page"]{color:#465B49;font-weight:600}
+.nav-links{display:flex;gap:clamp(16px,2vw,32px);align-items:center}
+.nav-toggle{display:none}
+@media (max-width:1100px){.nav-links{display:none}.nav-toggle{display:inline-flex}.nav-cta{display:none!important}}
+.icon-btn{width:48px;height:48px;border:1px solid rgba(48,59,50,.35);background:transparent;color:#303B32;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s}
+.icon-btn:hover{background:#303B32;color:#F7F3E9}
+.icon-btn.light{border-color:rgba(247,243,233,.55);color:#F7F3E9}
+.icon-btn.light:hover{background:#F7F3E9;color:#303B32}
+.drawer{position:fixed;inset:0;z-index:60;background:rgba(48,59,50,.45);display:flex;justify-content:flex-end}
+.drawer-panel{width:min(440px,100%);height:100%;background:#F7F3E9;padding:20px clamp(22px,5vw,36px) 32px;display:flex;flex-direction:column;overflow-y:auto;animation:slidein .45s cubic-bezier(.2,.7,.2,1) both}
+.mlink{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #E1D7C4;text-decoration:none;color:#303B32;font:500 34px/1.1 "Cormorant Garamond",Georgia,serif;min-height:44px}
+.mlink[aria-current="page"]{color:#465B49;font-style:italic}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+/* Photo placeholders — illustrative only, never presented as real photos of the shop */
+.ph{position:relative;overflow:hidden;background-color:#D9CDB6;background-image:radial-gradient(120% 90% at 20% 15%,rgba(252,250,245,.55),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(128,107,84,.35),transparent 60%);isolation:isolate}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M30 92c10-30 34-48 60-52-6 26-30 48-60 52z' fill='none' stroke='%23303B32' stroke-width='1'/%3E%3Cpath d='M30 92c18-16 34-30 60-52' fill='none' stroke='%23303B32' stroke-width='.8'/%3E%3C/svg%3E");background-size:120px 120px}
+.ph-sage{background-color:#A8B5A0;background-image:radial-gradient(120% 90% at 25% 15%,rgba(252,250,245,.45),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(70,91,73,.45),transparent 60%)}
+.ph-forest{background-color:#465B49;background-image:radial-gradient(110% 90% at 30% 20%,rgba(168,181,160,.35),transparent 60%),radial-gradient(90% 80% at 85% 95%,rgba(48,59,50,.7),transparent 60%)}
+.ph-forest::before{opacity:.18;filter:invert(1)}
+.ph-oat{background-color:#E8DDC9;background-image:radial-gradient(120% 90% at 20% 15%,rgba(252,250,245,.7),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(184,117,91,.22),transparent 60%)}
+.ph-brown{background-color:#806B54;background-image:radial-gradient(110% 90% at 25% 15%,rgba(232,221,201,.35),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(48,59,50,.55),transparent 60%)}
+.ph-brown::before{opacity:.16;filter:invert(1)}
+.ph-tag{position:absolute;left:14px;bottom:14px;z-index:2;max-width:calc(100% - 28px);background:rgba(252,250,245,.92);color:#303B32;font:600 10.5px/1.35 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:1px}
+.zoom-host{overflow:hidden}
+.zoom{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.zoom-host:hover .zoom,.zoom-host:focus-visible .zoom{transform:scale(1.05)}
+.kb{animation:kb 20s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.06)}}
+.reveal{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.reveal-2{animation:rise 1s .15s cubic-bezier(.2,.7,.2,1) both}
+.reveal-3{animation:rise 1s .3s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.scrollcue{animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(7px);opacity:1}}
+/* Layout helpers */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,96px);align-items:center}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:auto!important;grid-row:auto!important}}
+.section{padding:clamp(88px,11vw,168px) 0}
+.rule{height:1px;background:#DCCFB8;border:0;margin:0}
+.chip{flex:none;min-height:44px;padding:0 20px;border:1px solid #C9BBA2;background:transparent;color:#303B32;font:500 14px/1 "DM Sans",sans-serif;letter-spacing:.02em;cursor:pointer;border-radius:2px;display:inline-flex;align-items:center;gap:10px;transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:#465B49}
+.chip[aria-pressed="true"]{background:#465B49;border-color:#465B49;color:#F7F3E9}
+.chip .n{font-size:12px;opacity:.75}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px}
+.chips::-webkit-scrollbar{display:none}
+.todo{border:1px dashed #A68B4C;background:rgba(232,221,201,.55);padding:14px 16px;font-size:13.5px;line-height:1.6;color:#4E4433;border-radius:2px}
+.todo-tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6E5A45;margin-right:8px}
+.on-forest .todo,.on-dark .todo{background:rgba(252,250,245,.08);border-color:rgba(232,221,201,.55);color:#E8DDC9}
+.on-forest .todo-tag,.on-dark .todo-tag{color:#E8DDC9}
+.sample{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9A5A43;border:1px solid rgba(154,90,67,.45);padding:4px 8px;border-radius:1px}
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label{font-size:14px;font-weight:600;color:#303B32}
+.req{color:#9A5A43}
+.input{width:100%;min-height:52px;padding:12px 2px;background:transparent;border:0;border-bottom:1px solid #A89A82;border-radius:0;font:400 16px/1.4 "DM Sans",sans-serif;color:#303B32;transition:border-color .3s,box-shadow .3s}
+.input:hover{border-bottom-color:#465B49}
+.input:focus{outline:none;border-bottom-color:#465B49;box-shadow:0 2px 0 0 #465B49}
+.input[aria-invalid="true"]{border-bottom-color:#A3412C;box-shadow:0 2px 0 0 #A3412C}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23303B32' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:28px;cursor:pointer}
+textarea.input{min-height:132px;resize:vertical;border:1px solid #A89A82;padding:14px 16px;border-radius:2px}
+textarea.input:focus{box-shadow:0 0 0 1px #465B49;border-color:#465B49}
+.err{font-size:13.5px;color:#A3412C;line-height:1.5;font-weight:500;display:flex;gap:8px;align-items:flex-start}
+.err::before{content:"!";flex:none;width:16px;height:16px;border-radius:50%;background:#A3412C;color:#FCFAF5;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.notice{padding:16px 18px;border-left:2px solid #465B49;background:#FCFAF5;font-size:14.5px;line-height:1.6}
+.notice-err{border-left-color:#A3412C;background:#FBF1EC}
+.notice-warn{border:1px dashed #A68B4C;background:rgba(232,221,201,.55)}
+/* Dialog + lightbox */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(48,59,50,.55);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px)}
+.modal-panel{width:min(980px,100%);max-height:100%;overflow-y:auto;background:#F7F3E9;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);animation:rise .45s ease both}
+@media (max-width:820px){.modal{align-items:flex-end;padding:0}.modal-panel{grid-template-columns:minmax(0,1fr);max-height:94vh}.modal-art{display:none}}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(32,40,34,.96);color:#F7F3E9;display:flex;flex-direction:column;padding:clamp(12px,2vw,28px)}
+.lb-side{flex:none}
+.lb-mobile{display:none}
+@media (max-width:700px){.lb-side{display:none}.lb-mobile{display:inline-flex}}
+/* Footer */
+.foot a{color:#E3E6DC;text-decoration:none}.foot a:hover{color:#FCFAF5;text-decoration:underline;text-underline-offset:4px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.sticky-cta{display:none}
+@media (max-width:767px){.sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;gap:8px;padding:10px 12px;background:#F7F3E9;border-top:1px solid #DCCFB8}.sticky-cta .btn{flex:1;min-height:48px;padding:0 12px;letter-spacing:.08em}.site-pad{padding-bottom:70px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.leaf-deco{position:absolute;pointer-events:none;color:#465B49;opacity:.55}
+@media (max-width:767px){.leaf-deco{display:none}}
+@media (max-width:374px){.btn{padding:0 18px;letter-spacing:.08em}.chip{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.cat-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,minmax(260px,clamp(260px,24vw,360px)));gap:clamp(12px,1.4vw,18px)}
+.cat-tile{position:relative;display:flex;align-items:flex-end;text-decoration:none;color:#FCFAF5;min-height:260px}
+.cat-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,44,38,0) 35%,rgba(36,44,38,.78) 100%);pointer-events:none}
+.cat-cap{position:relative;z-index:2;padding:clamp(20px,2.4vw,32px)}
+.cat-more{display:inline-flex;gap:10px;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(252,250,245,.5);padding-bottom:4px}
+.cat-tile:hover .arr{transform:translateX(4px)}
+.cat-tile:hover{color:#FCFAF5}
+@media (max-width:1023px){.cat-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:280px}.cat-tile{grid-column:auto!important;grid-row:auto!important}.cat-tile:first-child{grid-column:1 / -1!important;grid-row:span 1!important}}
+@media (max-width:560px){.cat-grid{grid-template-columns:minmax(0,1fr);grid-auto-rows:240px}}
+.pop-row{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:22px;align-items:start;padding-bottom:28px;border-bottom:1px solid #D2C4AB}
+.pop-row:last-child{border-bottom:0}
+@media (max-width:420px){.pop-row{grid-template-columns:minmax(0,1fr)}}
+.phil-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 48px}
+.phil-item{padding-top:24px;border-top:1px solid #DCCFB8;position:relative}
+.phil-item:nth-child(even){transform:translateY(56px)}
+.phil-ico{position:absolute;top:24px;right:0;color:#465B49}
+@media (max-width:900px){.phil-item:nth-child(even){transform:none}}
+@media (max-width:600px){.phil-list{grid-template-columns:minmax(0,1fr);gap:36px}}
+.home-gal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,clamp(200px,20vw,300px));gap:clamp(10px,1.2vw,16px)}
+.gal-tile{position:relative;display:block}
+@media (max-width:900px){.home-gal{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:200px}.home-gal>*{grid-column:auto!important;grid-row:auto!important}.home-gal>*:first-child{grid-column:1 / -1!important}}
+@media (max-width:600px){.exp-facts{grid-template-columns:minmax(0,1fr)!important}}
+
+</style>
+</helmet>
+<div class="site-pad">
+<a class="skip" href="#main">Skip to content</a>
+<header style="position: sticky; top: 0; z-index: 40; background: {{headerBg}}; border-bottom: 1px solid {{headerBorder}}; transition: background .4s ease, border-color .4s ease">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; height: {{headerH}}px; transition: height .35s ease">
+<a href="Main.dc.html" aria-label="The Tea Collective, home" style="text-decoration: none; display: flex; align-items: center; gap: 12px; color: #303B32">
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="16" stroke="#465B49" stroke-width="1"></circle><path d="M10 24c2-8 7-12 15-14-1 8-6 13-15 14z" fill="#465B49"></path><path d="M10 24c4-4 8-8 15-14" stroke="#F7F3E9" stroke-width="1"></path></svg>
+<span style="display: flex; flex-direction: column; line-height: 1">
+<span style="font: 600 24px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: .01em">The Tea Collective</span>
+<span style="font-size: 9.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: #6E5A45; margin-top: 6px">Boutique tea · Santa Ana</span>
+</span>
+</a>
+<nav aria-label="Primary" class="nav-links">
+<a class="nav-link" href="Main.dc.html" aria-current="page">Home</a>
+<a class="nav-link" href="Collection.dc.html">Tea Collection</a>
+<a class="nav-link" href="About.dc.html">About</a>
+<a class="nav-link" href="Experience.dc.html">Tea Experience</a>
+<a class="nav-link" href="Gallery.dc.html">Gallery</a>
+<a class="nav-link" href="Contact.dc.html">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px">
+<a class="btn nav-cta" href="Collection.dc.html" style="min-height: 46px; padding: 0 22px">Explore Our Teas</a>
+<button type="button" class="icon-btn nav-toggle" aria-label="Open menu" aria-expanded="{{menuExpanded}}" aria-controls="site-drawer" onClick="{{openMenu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h18M3 16h18"></path></svg></button>
+</div>
+</div>
+</header>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div class="drawer" onClick="{{backdropClose}}">
+<div id="site-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu" onKeyDown="{{menuKey}}">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 60px">
+<span class="label">Menu</span>
+<button type="button" class="icon-btn" autoFocus="{{true}}" aria-label="Close menu" onClick="{{closeMenu}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</div>
+<nav aria-label="Mobile" style="display: flex; flex-direction: column; margin-top: 12px">
+<a class="mlink" href="Main.dc.html" aria-current="page">Home<span class="label" aria-hidden="true">01</span></a>
+<a class="mlink" href="Collection.dc.html">Tea Collection<span class="label" aria-hidden="true">02</span></a>
+<a class="mlink" href="About.dc.html">About<span class="label" aria-hidden="true">03</span></a>
+<a class="mlink" href="Experience.dc.html">Tea Experience<span class="label" aria-hidden="true">04</span></a>
+<a class="mlink" href="Gallery.dc.html">Gallery<span class="label" aria-hidden="true">05</span></a>
+<a class="mlink" href="Contact.dc.html">Contact<span class="label" aria-hidden="true">06</span></a>
+</nav>
+<div style="margin-top: auto; padding-top: 32px; display: flex; flex-direction: column; gap: 10px">
+<a class="btn" href="Collection.dc.html" style="width: 100%">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost" href="Contact.dc.html" style="width: 100%">Contact Us</a>
+<p class="hint" style="text-align: center; margin-top: 8px">9713 Cedar Street, Santa Ana, CA 92701</p>
+</div>
+</div>
+</div>
+</sc-if>
+<main id="main">
+
+<section aria-label="Welcome to The Tea Collective" onMouseEnter="{{hoverOn}}" onMouseLeave="{{hoverOff}}" onFocus="{{hoverOn}}" onBlur="{{hoverOff}}" style="position: relative; min-height: clamp(620px, 92vh, 940px); display: flex; align-items: flex-end; overflow: hidden; color: #FCFAF5; background: #303B32">
+<div aria-hidden="true" style="position: absolute; inset: 0">
+<sc-for list="{{slides}}" as="s" hint-placeholder-count="3">
+<div class="ph {{s.cls}}" style="position: absolute; inset: 0; opacity: {{s.opacity}}; transition: opacity 1.8s ease"><div class="ph {{s.cls}} kb" style="position: absolute; inset: 0"></div></div>
+</sc-for>
+<div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(36,44,38,.82) 0%, rgba(36,44,38,.55) 42%, rgba(36,44,38,.08) 78%)"></div>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(36,44,38,0) 55%, rgba(36,44,38,.6) 100%)"></div>
+</div>
+<p class="ph-tag" style="top: 22px; bottom: auto; left: auto; right: clamp(20px,5vw,72px)">Photo placeholder · {{slideLabel}}</p>
+<svg width="260" height="260" viewBox="0 0 200 200" fill="none" stroke="#E8DDC9" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="right: 8%; top: 18%; opacity: .35"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<div class="wrap" style="position: relative; padding-top: 120px; padding-bottom: clamp(88px, 11vw, 140px)">
+<p class="eyebrow light reveal">Boutique tea shop · Santa Ana, California</p>
+<h1 class="disp reveal-2" style="margin-top: 24px; font-size: clamp(58px, 8.8vw, 148px); max-width: 10ch; color: #FCFAF5">Find Your Moment <em style="color: #E8DDC9">in Every Cup.</em></h1>
+<p class="reveal-3" style="max-width: 500px; margin-top: 28px; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.75; color: #E3E6DC">Explore thoughtfully presented teas and discover a more meaningful way to enjoy your everyday tea ritual.</p>
+<div class="reveal-3" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px">
+<a class="btn btn-light" href="Collection.dc.html">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost-light" href="About.dc.html">Discover Our Story</a>
+</div>
+</div>
+<a href="#intro-h" style="position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; color: #E3E6DC; min-height: 44px">
+<span class="label" style="font-size: 10px; color: #E3E6DC">Scroll</span>
+<svg class="scrollcue" width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M7 1v18M2 14l5 5 5-5"></path></svg>
+<span class="sr">Skip to the introduction</span>
+</a>
+<div style="position: absolute; right: clamp(20px,5vw,72px); bottom: clamp(24px,4vw,44px); display: flex; align-items: center; gap: 2px">
+<sc-for list="{{slides}}" as="s" hint-placeholder-count="3">
+<button type="button" onClick="{{s.go}}" aria-label="{{s.aria}}" aria-pressed="{{s.pressed}}" style="width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0"><span style="display: block; width: {{s.w}}px; height: 2px; background: {{s.bar}}; transition: width .5s ease, background .5s ease"></span></button>
+</sc-for>
+<button type="button" class="icon-btn light" onClick="{{togglePlay}}" aria-label="{{playLabel}}" style="margin-left: 8px; width: 44px; height: 44px">
+<sc-if value="{{paused}}" hint-placeholder-val="{{false}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"></path></svg></sc-if>
+<sc-if value="{{playing}}" hint-placeholder-val="{{true}}"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg></sc-if>
+</button>
+</div>
+</section>
+
+<section aria-labelledby="intro-h" class="section" style="position: relative">
+<div class="wrap split" style="grid-template-columns: minmax(0, 6fr) minmax(0, 5fr)">
+<div style="position: relative; padding: 0 clamp(40px, 7vw, 110px) clamp(40px, 6vw, 90px) 0">
+<div class="ph ph-oat " style="aspect-ratio: 4 / 5"><p class="ph-tag">Photo placeholder · Tea being enjoyed by a sunlit window</p></div>
+<div class="ph ph-sage " style="position: absolute; right: 0; bottom: 0; width: 46%; aspect-ratio: 1 / 1; border: 10px solid #F7F3E9"><p class="ph-tag">Loose leaves in a ceramic dish</p></div>
+</div>
+<div style="max-width: 520px">
+<p class="eyebrow">The Tea Collective</p>
+<h2 id="intro-h" class="h2">More Than Tea. <em>A Moment to Yourself.</em></h2>
+<p class="lead" style="margin-top: 26px">The Tea Collective is a boutique tea shop on Cedar Street in Santa Ana. It’s a place to discover different teas, take your time choosing, and enjoy tea a little more mindfully, one cup at a time.</p>
+<div class="todo" style="margin-top: 24px"><span class="todo-tag">Client to supply</span>A short introduction in Samantha’s own words. Founding story, dates and milestones are left out until supplied.</div>
+<a class="tlink" href="About.dc.html" style="margin-top: 28px">Get to Know Us <span class="arr" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="cats-h" style="padding: 0 0 clamp(88px, 11vw, 160px)">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(36px, 5vw, 60px)">
+<div><p class="eyebrow">Featured collections</p><h2 id="cats-h" class="h2">Find the tea <em>that suits you.</em></h2></div>
+<p class="hint" style="max-width: 380px">Illustrative categories for the design. Final categories follow The Tea Collective’s actual range.</p>
+</div>
+<div class="cat-grid">
+<a class="cat-tile zoom-host" href="Collection.dc.html?category=green" onClick="{{pickCat_green}}" style="grid-column: 1 / span 5; grid-row: 1 / span 2" aria-label="Explore Green Tea">
+<div class="ph ph-sage" style="position: absolute; inset: 0"><div class="ph ph-sage zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag" style="top: 14px; bottom: auto">Photo placeholder · Green Tea</p></div>
+<div class="cat-cap">
+<p class="label" style="color: #E8DDC9">Category</p>
+<p style="font: 500 clamp(38px,3.6vw,54px)/1 'Cormorant Garamond', Georgia, serif; margin-top: 8px">Green Tea</p>
+<p style="margin-top: 10px; font-size: 15px; line-height: 1.6; color: #E8DDC9; max-width: 340px">Fresh, grassy and gently vegetal.</p>
+<span class="cat-more">Explore category <span class="arr" aria-hidden="true">→</span></span>
+</div>
+</a>
+<a class="cat-tile zoom-host" href="Collection.dc.html?category=black" onClick="{{pickCat_black}}" style="grid-column: 6 / span 4; grid-row: 1 / span 1" aria-label="Explore Black Tea">
+<div class="ph ph-brown" style="position: absolute; inset: 0"><div class="ph ph-brown zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag" style="top: 14px; bottom: auto">Photo placeholder · Black Tea</p></div>
+<div class="cat-cap">
+<p class="label" style="color: #E8DDC9">Category</p>
+<p style="font: 500 clamp(28px,2.4vw,36px)/1 'Cormorant Garamond', Georgia, serif; margin-top: 8px">Black Tea</p>
+
+<span class="cat-more">Explore category <span class="arr" aria-hidden="true">→</span></span>
+</div>
+</a>
+<a class="cat-tile zoom-host" href="Collection.dc.html?category=white" onClick="{{pickCat_white}}" style="grid-column: 10 / span 3; grid-row: 1 / span 1" aria-label="Explore White Tea">
+<div class="ph ph-oat" style="position: absolute; inset: 0"><div class="ph ph-oat zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag" style="top: 14px; bottom: auto">Photo placeholder · White Tea</p></div>
+<div class="cat-cap">
+<p class="label" style="color: #E8DDC9">Category</p>
+<p style="font: 500 clamp(28px,2.4vw,36px)/1 'Cormorant Garamond', Georgia, serif; margin-top: 8px">White Tea</p>
+
+<span class="cat-more">Explore category <span class="arr" aria-hidden="true">→</span></span>
+</div>
+</a>
+<a class="cat-tile zoom-host" href="Collection.dc.html?category=herbal" onClick="{{pickCat_herbal}}" style="grid-column: 6 / span 3; grid-row: 2 / span 1" aria-label="Explore Herbal Tea">
+<div class="ph " style="position: absolute; inset: 0"><div class="ph  zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag" style="top: 14px; bottom: auto">Photo placeholder · Herbal Tea</p></div>
+<div class="cat-cap">
+<p class="label" style="color: #E8DDC9">Category</p>
+<p style="font: 500 clamp(28px,2.4vw,36px)/1 'Cormorant Garamond', Georgia, serif; margin-top: 8px">Herbal Tea</p>
+
+<span class="cat-more">Explore category <span class="arr" aria-hidden="true">→</span></span>
+</div>
+</a>
+<a class="cat-tile zoom-host" href="Collection.dc.html?category=blends" onClick="{{pickCat_blends}}" style="grid-column: 9 / span 4; grid-row: 2 / span 1" aria-label="Explore Specialty Blends">
+<div class="ph ph-forest" style="position: absolute; inset: 0"><div class="ph ph-forest zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag" style="top: 14px; bottom: auto">Photo placeholder · Specialty Blends</p></div>
+<div class="cat-cap">
+<p class="label" style="color: #E8DDC9">Category</p>
+<p style="font: 500 clamp(28px,2.4vw,36px)/1 'Cormorant Garamond', Georgia, serif; margin-top: 8px">Specialty Blends</p>
+
+<span class="cat-more">Explore category <span class="arr" aria-hidden="true">→</span></span>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="pop-h" class="oat" style="padding: clamp(88px, 11vw, 152px) 0">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(36px, 5vw, 60px)">
+<div><p class="eyebrow">Popular teas</p><h2 id="pop-h" class="h2">Chosen to be <em>savoured.</em></h2></div>
+<a class="btn btn-ghost" href="Collection.dc.html">Explore All Teas <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<div class="g12" style="align-items: start">
+<article aria-labelledby="pop-feat" style="grid-column: span 6">
+<a class="zoom-host" href="Collection.dc.html?category=blends" onClick="{{pickCat_blends}}" tabindex="-1" aria-hidden="true" style="display: block; position: relative"><div class="ph ph-forest " style="aspect-ratio: 4 / 5"><div class="ph ph-forest zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Photo placeholder · A blend of tea leaves and botanicals</p></div></a>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-top: 24px">
+<div style="max-width: 440px">
+<p class="label">Specialty Blends <span class="sample" style="margin-left: 8px">Sample</span></p>
+<h3 id="pop-feat" class="disp" style="margin-top: 12px; font-size: clamp(34px, 3.4vw, 48px)">Sample Specialty Blend No. 1</h3>
+<p class="hint" style="margin-top: 10px">Placeholder for one of the shop’s teas. Name, description, origin and flavour notes to be supplied by The Tea Collective.</p>
+</div>
+<a class="btn" href="Contact.dc.html?product=s1" onClick="{{inquire_s1}}" aria-label="Inquire about Sample Specialty Blend No. 1">Inquire <span class="arr" aria-hidden="true">→</span></a>
+</div>
+</article>
+<div style="grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 28px; padding-top: clamp(0px, 6vw, 96px)">
+<article class="pop-row" aria-labelledby="pop-g1">
+<a class="zoom-host" href="Collection.dc.html?category=green" onClick="{{pickCat_green}}" tabindex="-1" aria-hidden="true" style="display: block; position: relative"><div class="ph ph-sage " style="aspect-ratio: 1 / 1"><div class="ph ph-sage zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Loose-leaf green tea in a glass jar</p></div></a>
+<div>
+<p class="label">Green Tea <span class="sample" style="margin-left: 8px">Sample</span></p>
+<h3 id="pop-g1" class="h3" style="margin-top: 10px">Sample Green Tea No. 1</h3>
+<p class="hint" style="margin-top: 8px">Placeholder for one of the shop’s teas. Name, description, origin and flavour notes to be supplied by The Tea Collective.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 8px">
+<a class="tlink" href="Collection.dc.html?category=green" onClick="{{pickCat_green}}">View details <span class="arr" aria-hidden="true">→</span></a>
+<a class="tlink" href="Contact.dc.html?product=g1" onClick="{{inquire_g1}}" aria-label="Inquire about Sample Green Tea No. 1">Inquire</a>
+</div>
+</div>
+</article>
+<article class="pop-row" aria-labelledby="pop-b1">
+<a class="zoom-host" href="Collection.dc.html?category=black" onClick="{{pickCat_black}}" tabindex="-1" aria-hidden="true" style="display: block; position: relative"><div class="ph ph-brown " style="aspect-ratio: 1 / 1"><div class="ph ph-brown zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Dark loose-leaf black tea on linen</p></div></a>
+<div>
+<p class="label">Black Tea <span class="sample" style="margin-left: 8px">Sample</span></p>
+<h3 id="pop-b1" class="h3" style="margin-top: 10px">Sample Black Tea No. 1</h3>
+<p class="hint" style="margin-top: 8px">Placeholder for one of the shop’s teas. Name, description, origin and flavour notes to be supplied by The Tea Collective.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 8px">
+<a class="tlink" href="Collection.dc.html?category=black" onClick="{{pickCat_black}}">View details <span class="arr" aria-hidden="true">→</span></a>
+<a class="tlink" href="Contact.dc.html?product=b1" onClick="{{inquire_b1}}" aria-label="Inquire about Sample Black Tea No. 1">Inquire</a>
+</div>
+</div>
+</article>
+<article class="pop-row" aria-labelledby="pop-h1">
+<a class="zoom-host" href="Collection.dc.html?category=herbal" onClick="{{pickCat_herbal}}" tabindex="-1" aria-hidden="true" style="display: block; position: relative"><div class="ph  " style="aspect-ratio: 1 / 1"><div class="ph  zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Dried flowers and herbs in a ceramic bowl</p></div></a>
+<div>
+<p class="label">Herbal Tea <span class="sample" style="margin-left: 8px">Sample</span></p>
+<h3 id="pop-h1" class="h3" style="margin-top: 10px">Sample Herbal Infusion No. 1</h3>
+<p class="hint" style="margin-top: 8px">Placeholder for one of the shop’s teas. Name, description, origin and flavour notes to be supplied by The Tea Collective.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 8px">
+<a class="tlink" href="Collection.dc.html?category=herbal" onClick="{{pickCat_herbal}}">View details <span class="arr" aria-hidden="true">→</span></a>
+<a class="tlink" href="Contact.dc.html?product=h1" onClick="{{inquire_h1}}" aria-label="Inquire about Sample Herbal Infusion No. 1">Inquire</a>
+</div>
+</div>
+</article>
+</div>
+</div>
+<div class="todo" style="margin-top: 40px"><span class="todo-tag">Client to supply</span>Featured products, photography and details. These are clearly marked samples; no real names, origins, ingredients or prices are invented.</div>
+</div>
+</section>
+
+<section aria-labelledby="exp-h" style="position: relative; min-height: clamp(560px, 80vh, 820px); display: flex; align-items: center; color: #FCFAF5; overflow: hidden; background: #303B32">
+<div aria-hidden="true" style="position: absolute; inset: 0; transform: translateY({{parallax}}px) scale(1.12)"><div class="ph ph-brown " style="position: absolute; inset: 0"></div></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(36,44,38,.15) 0%, rgba(36,44,38,.55) 50%, rgba(36,44,38,.88) 100%)"></div>
+<p class="ph-tag" style="top: 22px; bottom: auto">Photo placeholder · Tea being prepared at a wooden counter</p>
+<div class="wrap" style="position: relative; display: flex; justify-content: flex-end; padding-top: 80px; padding-bottom: 80px">
+<div style="max-width: 560px">
+<p class="eyebrow light">The tea experience</p>
+<h2 id="exp-h" class="h2" style="color: #FCFAF5">Slow Down. Steep Well. <em style="color: #E8DDC9">Enjoy More.</em></h2>
+<p style="margin-top: 22px; font-size: 17px; line-height: 1.75; color: #E3E6DC">Every tea has its own way of being brewed. A few degrees or a minute more can change the cup completely. Discover the varieties, learn the basics, and find the method that suits you.</p>
+<ul style="list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; border-top: 1px solid rgba(247,243,233,.25); padding-top: 22px" class="exp-facts">
+<li><span style="color: #E8DDC9"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4a2 2 0 0 1 4 0v10a4 4 0 1 1-4 0z"></path><path d="M12 9v8"></path></svg></span><p style="margin-top: 10px; font-size: 14px; line-height: 1.5; color: #E3E6DC">Water temperature</p></li>
+<li><span style="color: #E8DDC9"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l3 2"></path><path d="M9 2h6"></path></svg></span><p style="margin-top: 10px; font-size: 14px; line-height: 1.5; color: #E3E6DC">Steeping time</p></li>
+<li><span style="color: #E8DDC9"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="8" cy="7" rx="4" ry="5"></ellipse><path d="M10.5 11L20 20"></path></svg></span><p style="margin-top: 10px; font-size: 14px; line-height: 1.5; color: #E3E6DC">Leaf to water</p></li>
+</ul>
+<a class="btn btn-light" href="Experience.dc.html" style="margin-top: 34px">Explore the Tea Experience <span class="arr" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="phil-h" class="section" style="position: relative; overflow: hidden">
+<svg width="380" height="380" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="left: -60px; bottom: -40px; opacity: .6"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<div class="wrap g12" style="position: relative; align-items: start">
+<div style="grid-column: span 4">
+<p class="eyebrow">Our philosophy</p>
+<h2 id="phil-h" class="h2">A quieter <em>way to enjoy tea.</em></h2>
+<div class="todo" style="margin-top: 24px"><span class="todo-tag">Client to confirm</span>Draft values for approval. No sourcing, organic, sustainability or quality certifications are claimed.</div>
+</div>
+<ol class="phil-list" style="grid-column: 6 / span 7">
+<li class="phil-item">
+<span class="phil-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c1.5-7 6-11.5 14-14-1 8-6 13-14 14z"></path><path d="M5 19c4-4 8-8.5 14-14"></path></svg></span>
+<p class="serif" style="font-size: 20px; color: #806B54; font-style: italic">I</p>
+<h3 class="h3" style="margin-top: 6px">The beauty of simplicity</h3>
+<p class="hint" style="margin-top: 10px; font-size: 15px; max-width: 330px">Good tea needs little more than fresh water, a little time and a moment of attention.</p>
+</li><li class="phil-item">
+<span class="phil-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6z"></path><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"></path><path d="M8 3c-1 1.5 1 2.5 0 4M12 3c-1 1.5 1 2.5 0 4"></path><path d="M3 21h16"></path></svg></span>
+<p class="serif" style="font-size: 20px; color: #806B54; font-style: italic">II</p>
+<h3 class="h3" style="margin-top: 6px">An appreciation of tea</h3>
+<p class="hint" style="margin-top: 10px; font-size: 15px; max-width: 330px">Every variety has its own character. Part of the pleasure is getting to know them.</p>
+</li><li class="phil-item">
+<span class="phil-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></span>
+<p class="serif" style="font-size: 20px; color: #806B54; font-style: italic">III</p>
+<h3 class="h3" style="margin-top: 6px">Everyday rituals</h3>
+<p class="hint" style="margin-top: 10px; font-size: 15px; max-width: 330px">A cup in the morning, a pause in the afternoon. Small rituals that make a day feel calmer.</p>
+</li><li class="phil-item">
+<span class="phil-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></span>
+<p class="serif" style="font-size: 20px; color: #806B54; font-style: italic">IV</p>
+<h3 class="h3" style="margin-top: 6px">Thoughtful discovery</h3>
+<p class="hint" style="margin-top: 10px; font-size: 15px; max-width: 330px">Exploring new teas at your own pace, with a little guidance whenever you’d like it.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="gal-h" style="padding: 0 0 clamp(88px, 11vw, 152px)">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(32px, 4vw, 52px)">
+<div><p class="eyebrow">Gallery</p><h2 id="gal-h" class="h2">The world of <em>The Tea Collective.</em></h2></div>
+<a class="tlink" href="Gallery.dc.html">View Gallery <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<div class="home-gal">
+<a class="zoom-host gal-tile" href="Gallery.dc.html" aria-label="Open gallery: Tins and jars on a wooden shelf" style="grid-column: 1 / span 5; grid-row: 1 / span 2"><div class="ph ph-oat" style="position: absolute; inset: 0"><div class="ph ph-oat zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Tea Products · Tins and jars on a wooden shelf</p></div></a>
+<a class="zoom-host gal-tile" href="Gallery.dc.html" aria-label="Open gallery: Pouring tea into a ceramic cup" style="grid-column: 6 / span 4; grid-row: 1 / span 1"><div class="ph ph-brown" style="position: absolute; inset: 0"><div class="ph ph-brown zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Tea Preparation · Pouring tea into a ceramic cup</p></div></a>
+<a class="zoom-host gal-tile" href="Gallery.dc.html" aria-label="Open gallery: Loose leaves, close up" style="grid-column: 10 / span 3; grid-row: 1 / span 2"><div class="ph ph-sage" style="position: absolute; inset: 0"><div class="ph ph-sage zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Tea Details · Loose leaves, close up</p></div></a>
+<a class="zoom-host gal-tile" href="Gallery.dc.html" aria-label="Open gallery: Shop interior · illustrative" style="grid-column: 6 / span 2; grid-row: 2 / span 1"><div class="ph " style="position: absolute; inset: 0"><div class="ph  zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Shop Interior · Shop interior · illustrative</p></div></a>
+<a class="zoom-host gal-tile" href="Gallery.dc.html" aria-label="Open gallery: Steeping in a glass teapot" style="grid-column: 8 / span 2; grid-row: 2 / span 1"><div class="ph ph-forest" style="position: absolute; inset: 0"><div class="ph ph-forest zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Tea Preparation · Steeping in a glass teapot</p></div></a>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="visit-h" class="on-forest" style="padding: clamp(88px, 11vw, 160px) 0; position: relative; overflow: hidden">
+<svg width="420" height="420" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="right: -50px; top: -40px; opacity: .3"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<div class="wrap g12" style="position: relative; align-items: end">
+<div style="grid-column: span 7">
+<p class="eyebrow light">Visit the shop</p>
+<h2 id="visit-h" class="disp" style="margin-top: 18px; font-size: clamp(50px, 6.8vw, 112px); color: #FCFAF5">Your Next Favourite <em>Cup Awaits.</em></h2>
+</div>
+<div style="grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 18px">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer" style="display: flex; gap: 14px; text-decoration: none; line-height: 1.6"><span style="color: #E8DDC9; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><span>9713 Cedar Street<br>Santa Ana, CA 92701<span class="sr"> (opens Google Maps in a new tab)</span></span></a>
+<a href="tel:+19187316357" style="display: flex; gap: 14px; text-decoration: none; align-items: center; min-height: 44px"><span style="color: #E8DDC9; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span>+1 (918) 731-6357</a>
+<a href="mailto:theteacollective@hotmail.com" style="display: flex; gap: 14px; text-decoration: none; align-items: center; min-height: 44px; word-break: break-all"><span style="color: #E8DDC9; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"></rect><path d="M3 7l9 6 9-6"></path></svg></span>theteacollective@hotmail.com</a>
+<p style="display: flex; gap: 14px; color: #E3E6DC; font-size: 15px"><span style="color: #E8DDC9; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Contact us for current store hours.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px">
+<a class="btn btn-light" href="https://www.google.com/maps/dir/?api=1&amp;destination=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">Visit Our Shop <span class="arr" aria-hidden="true">↗</span><span class="sr"> (directions open in a new tab)</span></a>
+<a class="btn btn-ghost-light" href="Contact.dc.html">Contact Us</a>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<footer class="foot on-dark" style="padding: clamp(72px,9vw,112px) 0 36px; position: relative; overflow: hidden">
+<svg class="leaf-deco" width="320" height="320" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width=".8" aria-hidden="true" style="right: -40px; top: -30px; opacity: .25"><path d="M40 170C60 90 110 50 180 30c-14 70-60 118-140 140z"></path><path d="M40 170c40-40 80-84 140-140"></path><path d="M80 128c-2-18 2-34 10-46M110 98c-2-20 4-38 14-50M70 140c18 2 34-2 48-10M100 112c20 2 38-4 52-14"></path></svg>
+<div class="wrap" style="position: relative">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; padding-bottom: 52px; border-bottom: 1px solid rgba(247,243,233,.16)">
+<div style="flex: 1 1 320px; max-width: 420px">
+<p style="font: 500 38px/1 'Cormorant Garamond', Georgia, serif; color: #FCFAF5">The Tea Collective</p>
+<p style="margin: 16px 0 26px; line-height: 1.75; font-size: 15px; color: #D5DBCF">A boutique tea shop in Santa Ana, California. Discover the art of slowing down, one cup at a time.</p>
+<a class="btn btn-light" href="Collection.dc.html">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<nav aria-label="Footer" style="flex: 0 1 170px">
+<p class="label" style="color: #D9A58E; margin-bottom: 18px">Explore</p>
+<ul>
+<li><a href="Main.dc.html">Home</a></li>
+<li><a href="Collection.dc.html">Tea Collection</a></li>
+<li><a href="About.dc.html">About</a></li>
+<li><a href="Experience.dc.html">Tea Experience</a></li>
+<li><a href="Gallery.dc.html">Gallery</a></li>
+<li><a href="Contact.dc.html">Contact</a></li>
+</ul>
+</nav>
+<div style="flex: 0 1 300px">
+<p class="label" style="color: #D9A58E; margin-bottom: 18px">Visit &amp; contact</p>
+<address style="font-style: normal; line-height: 1.75; color: #E3E6DC; font-size: 15px">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">9713 Cedar Street<br>Santa Ana, CA 92701, USA<span class="sr"> (opens Google Maps in a new tab)</span></a><br>
+<a href="tel:+19187316357" style="display: inline-flex; min-height: 40px; align-items: center">+1 (918) 731-6357</a><br>
+<a href="mailto:theteacollective@hotmail.com" style="display: inline-flex; min-height: 40px; align-items: center; word-break: break-all">theteacollective@hotmail.com</a>
+</address>
+<p style="margin-top: 12px; font-size: 14px; color: #C2CABD">Contact us for current store hours.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; font-size: 13px; color: #C2CABD">
+<p>© 2026 The Tea Collective. All rights reserved.</p>
+<p>Social links appear here once official accounts are supplied.</p>
+</div>
+</div>
+</footer>
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+<a class="btn" href="Collection.dc.html">Our Teas</a>
+<a class="btn btn-ghost" href="Contact.dc.html">Contact</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"autoplay":{"editor":"boolean","default":true,"section":"Hero"},"interval":{"editor":"range","default":7,"min":6,"max":8,"step":0.5,"unit":"s","section":"Hero"},"$preview":{"width":1440,"height":8200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menu: false, scrolled: false, slide: 0, paused: false, hover: false, hidden: false, parallax: 0 };
+  }
+  navMount() {
+  this._onScroll = () => {
+    const s = window.scrollY > 24;
+    if (s !== !!this.state.scrolled) this.setState({ scrolled: s });
+    if (this.onScrollExtra) this.onScrollExtra();
+  };
+  window.addEventListener('scroll', this._onScroll, { passive: true });
+}
+navUnmount() {
+  if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+}
+navVals() {
+  return {
+    menu: !!this.state.menu,
+    menuExpanded: this.state.menu ? 'true' : 'false',
+    openMenu: () => this.setState({ menu: true }),
+    closeMenu: () => this.setState({ menu: false }),
+    backdropClose: (e) => { if (e.target === e.currentTarget) this.setState({ menu: false }); },
+    menuKey: (e) => { if (e.key === 'Escape') this.setState({ menu: false }); },
+    headerH: this.state.scrolled ? 68 : 88,
+    headerBg: this.state.scrolled ? 'rgba(247,243,233,0.97)' : '#F7F3E9',
+    headerBorder: this.state.scrolled ? '#DCCFB8' : 'transparent'
+  };
+}
+
+  handoffVals() {
+  // Category / product hand-off between pages. Production: ?category=<slug> and ?product=<id> in the URL.
+  const v = {};
+  ['green', 'black', 'white', 'herbal', 'blends'].forEach((c) => {
+    v['pickCat_' + c] = () => { try { window.sessionStorage.setItem('tc_cat', c); } catch (e) {} };
+  });
+  ['g1', 'b1', 'h1', 'w1', 's1', 'g2', 'b2', 'h2', 's2'].forEach((p) => {
+    v['inquire_' + p] = () => { try { window.sessionStorage.setItem('tc_product', p); } catch (e) {} };
+  });
+  return v;
+}
+
+  componentDidMount() {
+    this.navMount();
+    this._reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this._reduced || this.props.autoplay === false) this.setState({ paused: true });
+    this._onVis = () => this.setState({ hidden: document.hidden });
+    document.addEventListener('visibilitychange', this._onVis);
+    this.onScrollExtra = () => {
+      if (this._reduced) return;
+      const el = document.getElementById('exp-h');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const p = Math.max(-40, Math.min(40, (r.top - window.innerHeight / 2) * -0.06));
+      if (Math.abs(p - this.state.parallax) > 0.8) this.setState({ parallax: Math.round(p) });
+    };
+    this._timer = setInterval(() => {
+      const offscreen = window.scrollY > window.innerHeight * 0.9;
+      if (!this.state.paused && !this.state.hover && !this.state.menu && !this.state.hidden && !offscreen) this.setState({ slide: (this.state.slide + 1) % 3 });
+    }, (this.props.interval ?? 7) * 1000);
+  }
+  componentWillUnmount() {
+    this.navUnmount();
+    clearInterval(this._timer);
+    document.removeEventListener('visibilitychange', this._onVis);
+  }
+  renderVals() {
+    const labels = ['Loose tea leaves, ceramic cups and natural linen', 'Tea pouring in warm morning light', 'A glass teapot steeping on a wooden table'];
+    const cls = ['ph-brown', 'ph-forest', 'ph-sage'];
+    return {
+      ...this.navVals(),
+      ...this.handoffVals(),
+      slides: labels.map((l, i) => ({
+        cls: cls[i],
+        opacity: i === this.state.slide ? 1 : 0,
+        bar: i === this.state.slide ? '#FCFAF5' : 'rgba(252,250,245,0.45)',
+        w: i === this.state.slide ? 34 : 18,
+        pressed: i === this.state.slide ? 'true' : 'false',
+        aria: 'Show photo ' + (i + 1) + ' of 3: ' + l,
+        go: () => this.setState({ slide: i, paused: true })
+      })),
+      slideLabel: labels[this.state.slide],
+      paused: this.state.paused,
+      playing: !this.state.paused,
+      playLabel: this.state.paused ? 'Play photo slideshow' : 'Pause photo slideshow',
+      togglePlay: () => this.setState({ paused: !this.state.paused }),
+      hoverOn: () => this.setState({ hover: true }),
+      hoverOff: () => this.setState({ hover: false }),
+      parallax: this.state.parallax
+    };
+  }
+}
+</script>
+</body>
+</html>

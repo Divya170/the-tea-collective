@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Tea Collective — Tea Collection</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap">
+<style>
+/* The Tea Collective — design tokens
+   forest #465B49 (primary, 6.6:1 on cream) · sage #A8B5A0 · cream #F7F3E9 · oat #E8DDC9 · tea brown #806B54
+   botanical #303B32 (text, 10.5:1) · soft white #FCFAF5 · terracotta #B8755B (decorative only)
+   text-safe variants: brown #6E5A45 (4.9:1 on oat) · terracotta #9A5A43 (4.8:1 on cream) · terracotta on dark #D9A58E */
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F3E9;color:#303B32;font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#303B32}a:hover{color:#465B49}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid #465B49;outline-offset:3px}
+.on-forest :focus-visible,.on-dark :focus-visible{outline-color:#F7F3E9}
+.skip{position:absolute;left:-9999px;top:10px;z-index:100;background:#465B49;color:#F7F3E9;padding:12px 18px;text-decoration:none;font-weight:600}
+.skip:focus{left:10px;color:#F7F3E9}
+.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-0.01em}
+.disp{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:.98;letter-spacing:-0.02em;margin:0}
+.disp em,.h2 em{font-style:italic;color:#465B49}
+.on-forest .disp em,.on-forest .h2 em,.on-dark .disp em,.on-dark .h2 em{color:#E8DDC9}
+.h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.02;letter-spacing:-0.015em;font-size:clamp(38px,4.6vw,68px);margin:14px 0 0}
+.h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.1;margin:0}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px)}
+.label{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E5A45}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E5A45}
+.eyebrow::before{content:"";width:28px;height:1px;background:#B8755B;flex:none}
+.on-forest .eyebrow,.on-dark .eyebrow,.eyebrow.light{color:#E8DDC9}
+.lead{font-size:clamp(16px,1.2vw,18px);line-height:1.75;color:#4A5249}
+.on-forest .lead,.on-dark .lead{color:#E3E6DC}
+.hint{font-size:14px;line-height:1.6;color:#5C6158}
+.on-forest{background:#465B49;color:#F7F3E9}
+.on-dark{background:#303B32;color:#F7F3E9}
+.on-forest a,.on-dark a{color:#F7F3E9}
+.oat{background:#E8DDC9}
+.oat .label,.oat .eyebrow{color:#6E5A45}
+.soft{background:#FCFAF5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;background:#465B49;color:#F7F3E9;border:1px solid #465B49;border-radius:2px;font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease}
+.btn:hover{background:#303B32;border-color:#303B32;color:#F7F3E9}
+.btn:disabled{opacity:.6;cursor:progress}
+.btn-ghost{background:transparent;color:#303B32;border-color:#303B32}
+.btn-ghost:hover{background:#303B32;color:#F7F3E9}
+.btn-light{background:#F7F3E9;color:#303B32;border-color:#F7F3E9}
+.btn-light:hover{background:#E8DDC9;border-color:#E8DDC9;color:#303B32}
+.btn-ghost-light{background:transparent;color:#F7F3E9;border-color:rgba(247,243,233,.7)}
+.btn-ghost-light:hover{background:#F7F3E9;color:#303B32;border-color:#F7F3E9}
+.arr{display:inline-block;transition:transform .35s ease}
+.btn:hover .arr,.tlink:hover .arr{transform:translateX(4px)}
+.tlink{display:inline-flex;align-items:center;gap:10px;min-height:44px;font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#303B32;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/100% 1px no-repeat;transition:background-size .4s ease}
+.tlink:hover{background-size:40% 1px;color:#465B49}
+.on-forest .tlink,.on-dark .tlink{color:#F7F3E9}
+.nav-link{position:relative;text-decoration:none;color:#303B32;font-size:14px;font-weight:500;letter-spacing:.04em;padding:12px 2px;min-height:44px;display:inline-flex;align-items:center}
+.nav-link::after{content:"";position:absolute;left:2px;right:2px;bottom:8px;height:1px;background:#465B49;transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.nav-link:hover::after,.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+.nav-link[aria-current="page"]{color:#465B49;font-weight:600}
+.nav-links{display:flex;gap:clamp(16px,2vw,32px);align-items:center}
+.nav-toggle{display:none}
+@media (max-width:1100px){.nav-links{display:none}.nav-toggle{display:inline-flex}.nav-cta{display:none!important}}
+.icon-btn{width:48px;height:48px;border:1px solid rgba(48,59,50,.35);background:transparent;color:#303B32;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s}
+.icon-btn:hover{background:#303B32;color:#F7F3E9}
+.icon-btn.light{border-color:rgba(247,243,233,.55);color:#F7F3E9}
+.icon-btn.light:hover{background:#F7F3E9;color:#303B32}
+.drawer{position:fixed;inset:0;z-index:60;background:rgba(48,59,50,.45);display:flex;justify-content:flex-end}
+.drawer-panel{width:min(440px,100%);height:100%;background:#F7F3E9;padding:20px clamp(22px,5vw,36px) 32px;display:flex;flex-direction:column;overflow-y:auto;animation:slidein .45s cubic-bezier(.2,.7,.2,1) both}
+.mlink{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #E1D7C4;text-decoration:none;color:#303B32;font:500 34px/1.1 "Cormorant Garamond",Georgia,serif;min-height:44px}
+.mlink[aria-current="page"]{color:#465B49;font-style:italic}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+/* Photo placeholders — illustrative only, never presented as real photos of the shop */
+.ph{position:relative;overflow:hidden;background-color:#D9CDB6;background-image:radial-gradient(120% 90% at 20% 15%,rgba(252,250,245,.55),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(128,107,84,.35),transparent 60%);isolation:isolate}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M30 92c10-30 34-48 60-52-6 26-30 48-60 52z' fill='none' stroke='%23303B32' stroke-width='1'/%3E%3Cpath d='M30 92c18-16 34-30 60-52' fill='none' stroke='%23303B32' stroke-width='.8'/%3E%3C/svg%3E");background-size:120px 120px}
+.ph-sage{background-color:#A8B5A0;background-image:radial-gradient(120% 90% at 25% 15%,rgba(252,250,245,.45),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(70,91,73,.45),transparent 60%)}
+.ph-forest{background-color:#465B49;background-image:radial-gradient(110% 90% at 30% 20%,rgba(168,181,160,.35),transparent 60%),radial-gradient(90% 80% at 85% 95%,rgba(48,59,50,.7),transparent 60%)}
+.ph-forest::before{opacity:.18;filter:invert(1)}
+.ph-oat{background-color:#E8DDC9;background-image:radial-gradient(120% 90% at 20% 15%,rgba(252,250,245,.7),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(184,117,91,.22),transparent 60%)}
+.ph-brown{background-color:#806B54;background-image:radial-gradient(110% 90% at 25% 15%,rgba(232,221,201,.35),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(48,59,50,.55),transparent 60%)}
+.ph-brown::before{opacity:.16;filter:invert(1)}
+.ph-tag{position:absolute;left:14px;bottom:14px;z-index:2;max-width:calc(100% - 28px);background:rgba(252,250,245,.92);color:#303B32;font:600 10.5px/1.35 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:1px}
+.zoom-host{overflow:hidden}
+.zoom{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.zoom-host:hover .zoom,.zoom-host:focus-visible .zoom{transform:scale(1.05)}
+.kb{animation:kb 20s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.06)}}
+.reveal{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.reveal-2{animation:rise 1s .15s cubic-bezier(.2,.7,.2,1) both}
+.reveal-3{animation:rise 1s .3s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.scrollcue{animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(7px);opacity:1}}
+/* Layout helpers */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,96px);align-items:center}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:auto!important;grid-row:auto!important}}
+.section{padding:clamp(88px,11vw,168px) 0}
+.rule{height:1px;background:#DCCFB8;border:0;margin:0}
+.chip{flex:none;min-height:44px;padding:0 20px;border:1px solid #C9BBA2;background:transparent;color:#303B32;font:500 14px/1 "DM Sans",sans-serif;letter-spacing:.02em;cursor:pointer;border-radius:2px;display:inline-flex;align-items:center;gap:10px;transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:#465B49}
+.chip[aria-pressed="true"]{background:#465B49;border-color:#465B49;color:#F7F3E9}
+.chip .n{font-size:12px;opacity:.75}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px}
+.chips::-webkit-scrollbar{display:none}
+.todo{border:1px dashed #A68B4C;background:rgba(232,221,201,.55);padding:14px 16px;font-size:13.5px;line-height:1.6;color:#4E4433;border-radius:2px}
+.todo-tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6E5A45;margin-right:8px}
+.on-forest .todo,.on-dark .todo{background:rgba(252,250,245,.08);border-color:rgba(232,221,201,.55);color:#E8DDC9}
+.on-forest .todo-tag,.on-dark .todo-tag{color:#E8DDC9}
+.sample{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9A5A43;border:1px solid rgba(154,90,67,.45);padding:4px 8px;border-radius:1px}
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label{font-size:14px;font-weight:600;color:#303B32}
+.req{color:#9A5A43}
+.input{width:100%;min-height:52px;padding:12px 2px;background:transparent;border:0;border-bottom:1px solid #A89A82;border-radius:0;font:400 16px/1.4 "DM Sans",sans-serif;color:#303B32;transition:border-color .3s,box-shadow .3s}
+.input:hover{border-bottom-color:#465B49}
+.input:focus{outline:none;border-bottom-color:#465B49;box-shadow:0 2px 0 0 #465B49}
+.input[aria-invalid="true"]{border-bottom-color:#A3412C;box-shadow:0 2px 0 0 #A3412C}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23303B32' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:28px;cursor:pointer}
+textarea.input{min-height:132px;resize:vertical;border:1px solid #A89A82;padding:14px 16px;border-radius:2px}
+textarea.input:focus{box-shadow:0 0 0 1px #465B49;border-color:#465B49}
+.err{font-size:13.5px;color:#A3412C;line-height:1.5;font-weight:500;display:flex;gap:8px;align-items:flex-start}
+.err::before{content:"!";flex:none;width:16px;height:16px;border-radius:50%;background:#A3412C;color:#FCFAF5;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.notice{padding:16px 18px;border-left:2px solid #465B49;background:#FCFAF5;font-size:14.5px;line-height:1.6}
+.notice-err{border-left-color:#A3412C;background:#FBF1EC}
+.notice-warn{border:1px dashed #A68B4C;background:rgba(232,221,201,.55)}
+/* Dialog + lightbox */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(48,59,50,.55);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px)}
+.modal-panel{width:min(980px,100%);max-height:100%;overflow-y:auto;background:#F7F3E9;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);animation:rise .45s ease both}
+@media (max-width:820px){.modal{align-items:flex-end;padding:0}.modal-panel{grid-template-columns:minmax(0,1fr);max-height:94vh}.modal-art{display:none}}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(32,40,34,.96);color:#F7F3E9;display:flex;flex-direction:column;padding:clamp(12px,2vw,28px)}
+.lb-side{flex:none}
+.lb-mobile{display:none}
+@media (max-width:700px){.lb-side{display:none}.lb-mobile{display:inline-flex}}
+/* Footer */
+.foot a{color:#E3E6DC;text-decoration:none}.foot a:hover{color:#FCFAF5;text-decoration:underline;text-underline-offset:4px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.sticky-cta{display:none}
+@media (max-width:767px){.sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;gap:8px;padding:10px 12px;background:#F7F3E9;border-top:1px solid #DCCFB8}.sticky-cta .btn{flex:1;min-height:48px;padding:0 12px;letter-spacing:.08em}.site-pad{padding-bottom:70px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.leaf-deco{position:absolute;pointer-events:none;color:#465B49;opacity:.55}
+@media (max-width:767px){.leaf-deco{display:none}}
+@media (max-width:374px){.btn{padding:0 18px;letter-spacing:.08em}.chip{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.filter-bar{position:sticky;top:68px;z-index:20;background:rgba(247,243,233,.97);border-top:1px solid #DCCFB8;border-bottom:1px solid #DCCFB8;padding:10px 0 4px;margin-top:clamp(48px,6vw,80px)}
+.prod-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(40px,5vw,72px) clamp(20px,3vw,44px)}
+.prod{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.prod:nth-child(3n+2){margin-top:clamp(0px,6vw,88px)}
+.prod-meta{display:flex;gap:28px;margin:16px 0 0;padding:12px 0;border-top:1px solid #DCCFB8;border-bottom:1px solid #DCCFB8;font-size:13px}
+.prod-meta dt{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6E5A45}
+.prod-meta dd{margin:4px 0 0;color:#5C6158;font-style:italic}
+@media (min-width:1440px){.prod-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.prod:nth-child(3n+2){margin-top:0}.prod:nth-child(4n+2),.prod:nth-child(4n+4){margin-top:72px}}
+@media (max-width:1023px){.prod-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.prod:nth-child(3n+2){margin-top:0}.prod:nth-child(even){margin-top:56px}}
+@media (max-width:560px){.prod-grid{grid-template-columns:minmax(0,1fr)}.prod:nth-child(even){margin-top:0}}
+.form-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:560px){.form-2{grid-template-columns:minmax(0,1fr)}}
+.show-sm{display:none}
+@media (max-width:700px){.hide-sm{display:none!important}.show-sm{display:block}}
+
+</style>
+</helmet>
+<div class="site-pad">
+<a class="skip" href="#main">Skip to content</a>
+<header style="position: sticky; top: 0; z-index: 40; background: {{headerBg}}; border-bottom: 1px solid {{headerBorder}}; transition: background .4s ease, border-color .4s ease">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; height: {{headerH}}px; transition: height .35s ease">
+<a href="Main.dc.html" aria-label="The Tea Collective, home" style="text-decoration: none; display: flex; align-items: center; gap: 12px; color: #303B32">
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="16" stroke="#465B49" stroke-width="1"></circle><path d="M10 24c2-8 7-12 15-14-1 8-6 13-15 14z" fill="#465B49"></path><path d="M10 24c4-4 8-8 15-14" stroke="#F7F3E9" stroke-width="1"></path></svg>
+<span style="display: flex; flex-direction: column; line-height: 1">
+<span style="font: 600 24px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: .01em">The Tea Collective</span>
+<span style="font-size: 9.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: #6E5A45; margin-top: 6px">Boutique tea · Santa Ana</span>
+</span>
+</a>
+<nav aria-label="Primary" class="nav-links">
+<a class="nav-link" href="Main.dc.html">Home</a>
+<a class="nav-link" href="Collection.dc.html" aria-current="page">Tea Collection</a>
+<a class="nav-link" href="About.dc.html">About</a>
+<a class="nav-link" href="Experience.dc.html">Tea Experience</a>
+<a class="nav-link" href="Gallery.dc.html">Gallery</a>
+<a class="nav-link" href="Contact.dc.html">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px">
+<a class="btn nav-cta" href="Collection.dc.html" style="min-height: 46px; padding: 0 22px">Explore Our Teas</a>
+<button type="button" class="icon-btn nav-toggle" aria-label="Open menu" aria-expanded="{{menuExpanded}}" aria-controls="site-drawer" onClick="{{openMenu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h18M3 16h18"></path></svg></button>
+</div>
+</div>
+</header>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div class="drawer" onClick="{{backdropClose}}">
+<div id="site-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu" onKeyDown="{{menuKey}}">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 60px">
+<span class="label">Menu</span>
+<button type="button" class="icon-btn" autoFocus="{{true}}" aria-label="Close menu" onClick="{{closeMenu}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</div>
+<nav aria-label="Mobile" style="display: flex; flex-direction: column; margin-top: 12px">
+<a class="mlink" href="Main.dc.html">Home<span class="label" aria-hidden="true">01</span></a>
+<a class="mlink" href="Collection.dc.html" aria-current="page">Tea Collection<span class="label" aria-hidden="true">02</span></a>
+<a class="mlink" href="About.dc.html">About<span class="label" aria-hidden="true">03</span></a>
+<a class="mlink" href="Experience.dc.html">Tea Experience<span class="label" aria-hidden="true">04</span></a>
+<a class="mlink" href="Gallery.dc.html">Gallery<span class="label" aria-hidden="true">05</span></a>
+<a class="mlink" href="Contact.dc.html">Contact<span class="label" aria-hidden="true">06</span></a>
+</nav>
+<div style="margin-top: auto; padding-top: 32px; display: flex; flex-direction: column; gap: 10px">
+<a class="btn" href="Collection.dc.html" style="width: 100%">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost" href="Contact.dc.html" style="width: 100%">Contact Us</a>
+<p class="hint" style="text-align: center; margin-top: 8px">9713 Cedar Street, Santa Ana, CA 92701</p>
+</div>
+</div>
+</div>
+</sc-if>
+<main id="main">
+
+<section aria-labelledby="page-h" style="padding: clamp(40px, 5vw, 64px) 0 0; position: relative; overflow: hidden">
+<svg width="300" height="300" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="right: 30%; top: -20px; opacity: .55"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<div class="wrap" style="position: relative">
+<nav aria-label="Breadcrumb"><ol style="list-style: none; display: flex; gap: 10px; margin: 0; padding: 0; font-size: 13px; letter-spacing: .06em; color: #5C6158"><li><a href="Main.dc.html" style="color: inherit">Home</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: #465B49; font-weight: 600">Tea Collection</li></ol></nav>
+<div class="g12" style="margin-top: clamp(28px, 4vw, 52px); align-items: end">
+<div style="grid-column: span 6; padding-bottom: clamp(0px, 3vw, 40px)">
+<p class="eyebrow reveal">The collection</p>
+<h1 id="page-h" class="disp reveal-2" style="margin-top: 20px; font-size: clamp(56px, 8vw, 128px)">Explore Our <em>Tea Collection.</em></h1>
+<p class="lead reveal-3" style="margin-top: 24px; max-width: 460px">Discover different tea varieties and find the flavours that suit your moments.</p>
+</div>
+<div class="reveal-3" style="grid-column: 8 / span 5; position: relative">
+<div class="ph ph-oat " style="aspect-ratio: 4 / 5"><p class="ph-tag">Photo placeholder · Tea jars and tins on a wooden shelf</p></div>
+<div class="ph ph-sage hide-sm" style="position: absolute; left: -18%; bottom: 10%; width: 40%; aspect-ratio: 3 / 4; border: 8px solid #F7F3E9"><p class="ph-tag">Tea leaves</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<nav aria-label="Tea categories" class="filter-bar">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 18px">
+<div class="chips" role="group" aria-label="Filter teas by category">
+<sc-for list="{{filters}}" as="c" hint-placeholder-count="6">
+<button type="button" class="chip" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}">{{c.label}}<span class="n">{{c.count}}</span></button>
+</sc-for>
+</div>
+<p class="hint hide-sm" aria-live="polite" style="flex: none">{{liveText}}</p>
+</div>
+</nav>
+
+<section aria-labelledby="cat-h" style="padding: clamp(40px, 5vw, 72px) 0 clamp(88px, 11vw, 150px)">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: clamp(32px, 4vw, 56px)">
+<div style="max-width: 640px">
+<h2 id="cat-h" class="h2" style="margin: 0; font-size: clamp(34px, 3.6vw, 52px)">{{catTitle}}</h2>
+<p class="lead" style="margin-top: 12px">{{catBlurb}}</p>
+</div>
+<p class="hint show-sm" aria-hidden="true">{{liveText}}</p>
+</div>
+<div class="todo" style="margin-bottom: clamp(32px, 4vw, 48px)"><span class="todo-tag">Client to supply</span>The real product list. Every card below is a clearly marked sample: no tea names, origins, flavour notes, ingredients or prices are invented. Categories with no products are hidden on the live site.</div>
+<ul class="prod-grid">
+<sc-for list="{{shown}}" as="p" hint-placeholder-count="9">
+<li class="prod" style="animation-delay: {{p.delay}}ms">
+<article aria-labelledby="{{p.hid}}">
+<div class="ph {{p.cls}} zoom-host" style="aspect-ratio: 4 / 5"><div class="ph {{p.cls}} zoom" aria-hidden="true" style="position: absolute; inset: 0"></div><p class="ph-tag">Photo placeholder · {{p.alt}}</p><span class="sample" style="position: absolute; top: 14px; left: 14px; background: #FCFAF5">Sample</span></div>
+<p class="label" style="margin-top: 22px">{{p.catName}}</p>
+<h3 id="{{p.hid}}" class="h3" style="margin-top: 10px">{{p.name}}</h3>
+<p class="hint" style="margin-top: 10px">Placeholder for one of the shop’s teas. Name, description, origin and flavour notes to be supplied by The Tea Collective.</p>
+<dl class="prod-meta">
+<div><dt>Origin</dt><dd>To be supplied</dd></div>
+<div><dt>Flavour</dt><dd>To be supplied</dd></div>
+</dl>
+<button type="button" class="tlink" onClick="{{p.inquire}}" aria-haspopup="dialog" aria-label="{{p.aria}}" style="border: 0; cursor: pointer; margin-top: 10px; padding: 0">Inquire About This Tea <span class="arr" aria-hidden="true">→</span></button>
+</article>
+</li>
+</sc-for>
+</ul>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="text-align: center; padding: 64px 20px; border: 1px solid #DCCFB8">
+<p class="disp" style="font-size: 36px">No teas in this category yet</p>
+<p class="hint" style="margin-top: 10px">Ask us what’s currently available, or browse the full collection.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px"><button type="button" class="btn btn-ghost" onClick="{{showAll}}">Show All Teas</button><a class="btn" href="Contact.dc.html">Ask Us</a></div>
+</div>
+</sc-if>
+</div>
+</section>
+
+<section aria-labelledby="cta-h" class="on-forest" style="position: relative; overflow: hidden">
+<div class="g12" style="gap: 0; align-items: stretch">
+<div style="grid-column: span 5; min-height: 380px; position: relative"><div class="ph ph-brown " style="position: absolute; inset: 0"><p class="ph-tag">Photo placeholder · Steam rising from a cup of tea</p></div></div>
+<div style="grid-column: 6 / span 7; padding: clamp(64px, 8vw, 120px) clamp(20px, 6vw, 96px); position: relative">
+<svg width="220" height="220" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="right: 20px; bottom: 10px; opacity: .35"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<p class="eyebrow light">Need a little guidance?</p>
+<h2 id="cta-h" class="h2" style="color: #FCFAF5">Not Sure Which <em>Tea to Choose?</em></h2>
+<p class="lead" style="margin-top: 18px; max-width: 480px">Get in touch and let us help you explore the collection.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px"><a class="btn btn-light" href="Contact.dc.html">Ask Us About Our Teas <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-ghost-light" href="Experience.dc.html">Learn How to Brew</a></div>
+</div>
+</div>
+</section>
+
+</main>
+
+<sc-if value="{{modalOpen}}" hint-placeholder-val="{{false}}">
+<div class="modal" onClick="{{modalBackdrop}}">
+<div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="inq-h" onKeyDown="{{modalKey}}">
+<div class="modal-art ph {{mp.cls}}" style="min-height: 100%"><p class="ph-tag">Photo placeholder · {{mp.alt}}</p></div>
+<div style="padding: clamp(24px, 4vw, 48px); position: relative">
+<button type="button" class="icon-btn" autoFocus="{{true}}" onClick="{{closeModal}}" aria-label="Close inquiry form" style="position: absolute; top: 16px; right: 16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+<p class="label">Product inquiry</p>
+<h2 id="inq-h" class="disp" style="margin-top: 12px; font-size: clamp(32px, 3vw, 42px); padding-right: 56px">Ask about {{mp.name}}</h2>
+<p class="hint" style="margin-top: 10px">We’ll reply by email{{phoneNote}}. Fields marked <span class="req">*</span> are required.</p>
+<div style="margin-top: 22px">
+<div aria-live="polite" role="status">
+<sc-if value="{{isSuccess}}" hint-placeholder-val="{{false}}">
+<div style="animation: rise .5s ease both; padding: 8px 0">
+<span style="width: 56px; height: 56px; border: 1px solid #465B49; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #465B49"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 19c1.5-7 6-11.5 14-14-1 8-6 13-14 14z"></path><path d="M5 19c4-4 8-8.5 14-14"></path></svg></span>
+<p class="disp" style="font-size: clamp(34px, 3.4vw, 46px); margin-top: 20px">Thank you. Your inquiry is on its way.</p>
+<p class="lead" style="margin-top: 14px">The Tea Collective has your question about <strong>{{mpSent}}</strong> and will reply to <strong>{{f.email}}</strong>.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px"><a class="btn" href="Collection.dc.html">Keep Exploring Teas <span class="arr" aria-hidden="true">→</span></a><button type="button" class="btn btn-ghost" onClick="{{resetForm}}">Ask About Another Tea</button></div>
+</div>
+</sc-if>
+<sc-if value="{{isFailure}}" hint-placeholder-val="{{false}}">
+<div role="alert" class="notice notice-err" style="margin-bottom: 24px"><p style="font-weight: 600; color: #7E3221">Your message couldn’t be sent.</p><p class="hint" style="margin-top: 6px">Your details are still here. Please try again, or email <a href="mailto:theteacollective@hotmail.com">theteacollective@hotmail.com</a> or call <a href="tel:+19187316357">+1 (918) 731-6357</a>.</p></div>
+</sc-if>
+<sc-if value="{{isUnsent}}" hint-placeholder-val="{{false}}">
+<div class="notice notice-warn" style="margin-bottom: 24px"><p style="font-weight: 600">Your message looks complete, but it has not been sent.</p><p class="hint" style="margin-top: 6px">Online inquiries aren’t connected yet. Please email <a href="mailto:theteacollective@hotmail.com">theteacollective@hotmail.com</a> or call <a href="tel:+19187316357">+1 (918) 731-6357</a>, and we’ll be happy to help.</p><p style="margin-top: 10px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #6E5A45">Developer note · connect the inquiry endpoint here</p></div>
+</sc-if>
+</div>
+<sc-if value="{{showForm}}" hint-placeholder-val="{{true}}">
+<form noValidate="{{true}}" onSubmit="{{onSubmit}}" aria-label="Product inquiry" style="display: flex; flex-direction: column; gap: 22px">
+<sc-if value="{{isInvalid}}" hint-placeholder-val="{{false}}"><div role="alert" class="notice notice-err" style="font-size: 14px; color: #7E3221; font-weight: 600">{{errSummary}}</div></sc-if>
+<div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden"><label for="fld-website">Website</label><input id="fld-website" name="website" type="text" tabindex="-1" autocomplete="off" value="{{f.website}}" onChange="{{onField}}"></div>
+<div class="form-2"><div class="field"><label for="fld-name">Full name <span class="req" aria-hidden="true">*</span></label><input id="fld-name" name="name" type="text" class="input" autocomplete="name" required="{{true}}" maxLength="120" aria-invalid="{{fx.name.invalid}}" aria-describedby="{{fx.name.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.name}}"><sc-if value="{{fx.name.has}}" hint-placeholder-val="{{false}}"><p id="name-err" class="err">{{fx.name.err}}</p></sc-if></div><div class="field"><label for="fld-email">Email address <span class="req" aria-hidden="true">*</span></label><input id="fld-email" name="email" type="email" class="input" autocomplete="email" inputMode="email" required="{{true}}" maxLength="160" aria-invalid="{{fx.email.invalid}}" aria-describedby="{{fx.email.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.email}}"><sc-if value="{{fx.email.has}}" hint-placeholder-val="{{false}}"><p id="email-err" class="err">{{fx.email.err}}</p></sc-if></div></div><div class="field"><label for="fld-phone">Phone number <span style="font-weight: 400; color: #5C6158">(optional)</span></label><input id="fld-phone" name="phone" type="tel" class="input" autocomplete="tel" inputMode="tel" maxLength="30" aria-invalid="{{fx.phone.invalid}}" aria-describedby="{{fx.phone.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.phone}}"><sc-if value="{{fx.phone.has}}" hint-placeholder-val="{{false}}"><p id="phone-err" class="err">{{fx.phone.err}}</p></sc-if><p id="phone-hint" class="hint" style="font-size: 13px">Only if you’d prefer a call back.</p></div>
+<div class="field"><label for="fld-product">Selected tea <span class="req" aria-hidden="true">*</span></label><select id="fld-product" name="product" class="input" required="{{true}}" aria-invalid="{{fx.product.invalid}}" aria-describedby="{{fx.product.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.product}}"><option value="">Choose a tea</option><option value="g1">Sample Green Tea No. 1 (Green Tea)</option><option value="b1">Sample Black Tea No. 1 (Black Tea)</option><option value="h1">Sample Herbal Infusion No. 1 (Herbal Tea)</option><option value="w1">Sample White Tea No. 1 (White Tea)</option><option value="s1">Sample Specialty Blend No. 1 (Specialty Blends)</option><option value="g2">Sample Green Tea No. 2 (Green Tea)</option><option value="b2">Sample Black Tea No. 2 (Black Tea)</option><option value="h2">Sample Herbal Infusion No. 2 (Herbal Tea)</option><option value="s2">Sample Specialty Blend No. 2 (Specialty Blends)</option><option value="general">Not sure yet / general question</option></select><sc-if value="{{fx.product.has}}" hint-placeholder-val="{{false}}"><p id="product-err" class="err">{{fx.product.err}}</p></sc-if></div>
+<div class="field"><label for="fld-message">Message <span class="req" aria-hidden="true">*</span></label><textarea id="fld-message" name="message" class="input" rows="4" maxLength="1500" required="{{true}}" aria-invalid="{{fx.message.invalid}}" aria-describedby="{{fx.message.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.message}}" placeholder="What would you like to know?"></textarea><sc-if value="{{fx.message.has}}" hint-placeholder-val="{{false}}"><p id="message-err" class="err">{{fx.message.err}}</p></sc-if><p class="hint" style="font-size: 13px; text-align: right" aria-hidden="true">{{msgCount}}</p></div>
+<p class="hint" style="display: flex; gap: 10px; align-items: flex-start"><span style="color: #465B49; flex: none; margin-top: 2px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c1.5-7 6-11.5 14-14-1 8-6 13-14 14z"></path><path d="M5 19c4-4 8-8.5 14-14"></path></svg></span><span>Your details are used only to reply to your message. We won’t add you to a mailing list.</span></p>
+<button type="submit" class="btn" disabled="{{isSending}}" aria-busy="{{busy}}" style="align-self: flex-start; min-width: 220px">{{submitLabel}} <span class="arr" aria-hidden="true">→</span></button>
+</form>
+</sc-if>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+<footer class="foot on-dark" style="padding: clamp(72px,9vw,112px) 0 36px; position: relative; overflow: hidden">
+<svg class="leaf-deco" width="320" height="320" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width=".8" aria-hidden="true" style="right: -40px; top: -30px; opacity: .25"><path d="M40 170C60 90 110 50 180 30c-14 70-60 118-140 140z"></path><path d="M40 170c40-40 80-84 140-140"></path><path d="M80 128c-2-18 2-34 10-46M110 98c-2-20 4-38 14-50M70 140c18 2 34-2 48-10M100 112c20 2 38-4 52-14"></path></svg>
+<div class="wrap" style="position: relative">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; padding-bottom: 52px; border-bottom: 1px solid rgba(247,243,233,.16)">
+<div style="flex: 1 1 320px; max-width: 420px">
+<p style="font: 500 38px/1 'Cormorant Garamond', Georgia, serif; color: #FCFAF5">The Tea Collective</p>
+<p style="margin: 16px 0 26px; line-height: 1.75; font-size: 15px; color: #D5DBCF">A boutique tea shop in Santa Ana, California. Discover the art of slowing down, one cup at a time.</p>
+<a class="btn btn-light" href="Collection.dc.html">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<nav aria-label="Footer" style="flex: 0 1 170px">
+<p class="label" style="color: #D9A58E; margin-bottom: 18px">Explore</p>
+<ul>
+<li><a href="Main.dc.html">Home</a></li>
+<li><a href="Collection.dc.html">Tea Collection</a></li>
+<li><a href="About.dc.html">About</a></li>
+<li><a href="Experience.dc.html">Tea Experience</a></li>
+<li><a href="Gallery.dc.html">Gallery</a></li>
+<li><a href="Contact.dc.html">Contact</a></li>
+</ul>
+</nav>
+<div style="flex: 0 1 300px">
+<p class="label" style="color: #D9A58E; margin-bottom: 18px">Visit &amp; contact</p>
+<address style="font-style: normal; line-height: 1.75; color: #E3E6DC; font-size: 15px">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">9713 Cedar Street<br>Santa Ana, CA 92701, USA<span class="sr"> (opens Google Maps in a new tab)</span></a><br>
+<a href="tel:+19187316357" style="display: inline-flex; min-height: 40px; align-items: center">+1 (918) 731-6357</a><br>
+<a href="mailto:theteacollective@hotmail.com" style="display: inline-flex; min-height: 40px; align-items: center; word-break: break-all">theteacollective@hotmail.com</a>
+</address>
+<p style="margin-top: 12px; font-size: 14px; color: #C2CABD">Contact us for current store hours.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; font-size: 13px; color: #C2CABD">
+<p>© 2026 The Tea Collective. All rights reserved.</p>
+<p>Social links appear here once official accounts are supplied.</p>
+</div>
+</div>
+</footer>
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+<a class="btn" href="Collection.dc.html">Our Teas</a>
+<a class="btn btn-ghost" href="Contact.dc.html">Contact</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"category":{"editor":"enum","options":["All Teas","Green Tea","Black Tea","White Tea","Herbal Tea","Specialty Blends"],"default":"All Teas","section":"Catalogue"},"formState":{"editor":"enum","options":["Live form","Not connected (no backend)","Success (with backend)","Error"],"default":"Live form","section":"Inquiry form"},"$preview":{"width":1440,"height":5200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menu: false, scrolled: false, cat: 'all', modal: null, ...this.formInit() };
+  }
+  navMount() {
+  this._onScroll = () => {
+    const s = window.scrollY > 24;
+    if (s !== !!this.state.scrolled) this.setState({ scrolled: s });
+    if (this.onScrollExtra) this.onScrollExtra();
+  };
+  window.addEventListener('scroll', this._onScroll, { passive: true });
+}
+navUnmount() {
+  if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+}
+navVals() {
+  return {
+    menu: !!this.state.menu,
+    menuExpanded: this.state.menu ? 'true' : 'false',
+    openMenu: () => this.setState({ menu: true }),
+    closeMenu: () => this.setState({ menu: false }),
+    backdropClose: (e) => { if (e.target === e.currentTarget) this.setState({ menu: false }); },
+    menuKey: (e) => { if (e.key === 'Escape') this.setState({ menu: false }); },
+    headerH: this.state.scrolled ? 68 : 88,
+    headerBg: this.state.scrolled ? 'rgba(247,243,233,0.97)' : '#F7F3E9',
+    headerBorder: this.state.scrolled ? '#DCCFB8' : 'transparent'
+  };
+}
+
+  formInit() {
+  return { f: { name: '', email: '', phone: '', product: '', subject: '', message: '', website: '' }, seen: {}, submitted: false, status: 'idle' };
+}
+validateForm(f, needSubject) {
+  const e = {};
+  if (f.name.trim().length < 2) e.name = 'Please enter your name.';
+  if (!f.email.trim()) e.email = 'Please enter your email address.';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = 'Enter an email address like name@example.com.';
+  const d = f.phone.replace(/\D/g, '');
+  if (f.phone.trim() && (d.length < 10 || d.length > 15)) e.phone = 'Enter a phone number with 10 to 15 digits, or leave it blank.';
+  if (needSubject && !f.subject) e.subject = 'Choose what your message is about.';
+  if (!needSubject && !f.product) e.product = 'Choose the tea you’re asking about.';
+  if (f.message.trim().length < 10) e.message = 'Please write a short message (at least 10 characters).';
+  else if (f.message.length > 1500) e.message = 'Please keep your message under 1,500 characters.';
+  return e;
+}
+formVals(order, needSubject, labels) {
+  const f = this.state.f;
+  const errs = this.validateForm(f, needSubject);
+  const fx = {};
+  order.forEach((k) => {
+    const m = (this.state.submitted || this.state.seen[k]) && errs[k] ? errs[k] : '';
+    fx[k] = { err: m, has: !!m, invalid: m ? 'true' : 'false', desc: m ? k + '-err' : (k === 'phone' ? 'phone-hint' : '') };
+  });
+  const pv = this.props.formState;
+  const status = pv === 'Success (with backend)' ? 'success' : pv === 'Error' ? 'failure' : pv === 'Not connected (no backend)' ? 'unsent' : this.state.status;
+  const bad = order.filter((k) => errs[k]);
+  const setF = (patch) => this.setState({ f: { ...this.state.f, ...patch }, status: ['unsent', 'failure'].includes(this.state.status) ? 'idle' : this.state.status });
+  return {
+    f, fx,
+    onField: (e) => setF({ [e.target.name]: e.target.value }),
+    onBlur: (e) => this.setState({ seen: { ...this.state.seen, [e.target.name]: true } }),
+    isInvalid: status === 'invalid' && bad.length > 0,
+    errSummary: (bad.length === 1 ? 'Please check 1 field: ' : 'Please check ' + bad.length + ' fields: ') + bad.map((k) => labels[k]).join(', ') + '.',
+    isSending: status === 'sending',
+    isUnsent: status === 'unsent',
+    isSuccess: status === 'success',
+    isFailure: status === 'failure',
+    showForm: status !== 'success',
+    busy: status === 'sending' ? 'true' : 'false',
+    submitLabel: status === 'sending' ? 'Sending…' : 'Send Inquiry',
+    msgCount: f.message.length + ' / 1500',
+    resetForm: () => this.setState({ ...this.formInit(), f: { ...this.formInit().f, product: this.state.f.product } }),
+    onSubmit: (e) => {
+      e.preventDefault();
+      if (this.state.status === 'sending') return;
+      if (this.state.f.website) return; // honeypot
+      const er = this.validateForm(this.state.f, needSubject);
+      const first = order.find((k) => er[k]);
+      if (first) {
+        this.setState({ submitted: true, status: 'invalid' });
+        setTimeout(() => { const el = document.getElementById('fld-' + first); if (el) el.focus(); }, 0);
+        return;
+      }
+      this.setState({ submitted: true, status: 'sending' });
+      clearTimeout(this._send);
+      // INTEGRATION POINT: no inquiry backend was supplied. Replace this timeout with a POST to the shop's
+      // inquiry endpoint and set status to 'success' or 'failure' from the real response. Never show success without one.
+      this._send = setTimeout(() => this.setState({ status: 'unsent' }), 900);
+    }
+  };
+}
+
+  products() {
+    return [
+      { id: 'g1', cat: 'green', name: 'Sample Green Tea No. 1', cls: 'ph-sage', alt: 'Loose-leaf green tea in a glass jar' },
+      { id: 'b1', cat: 'black', name: 'Sample Black Tea No. 1', cls: 'ph-brown', alt: 'Dark loose-leaf black tea on linen' },
+      { id: 'h1', cat: 'herbal', name: 'Sample Herbal Infusion No. 1', cls: '', alt: 'Dried flowers and herbs in a ceramic bowl' },
+      { id: 'w1', cat: 'white', name: 'Sample White Tea No. 1', cls: 'ph-oat', alt: 'Silvery white tea buds' },
+      { id: 's1', cat: 'blends', name: 'Sample Specialty Blend No. 1', cls: 'ph-forest', alt: 'A blend of tea leaves and botanicals' },
+      { id: 'g2', cat: 'green', name: 'Sample Green Tea No. 2', cls: 'ph-sage', alt: 'Green tea leaves beside a small cup' },
+      { id: 'b2', cat: 'black', name: 'Sample Black Tea No. 2', cls: 'ph-brown', alt: 'Packaged black tea tin' },
+      { id: 'h2', cat: 'herbal', name: 'Sample Herbal Infusion No. 2', cls: 'ph-oat', alt: 'Herbal infusion in a glass teapot' },
+      { id: 's2', cat: 'blends', name: 'Sample Specialty Blend No. 2', cls: '', alt: 'Blend in an open paper pouch' }
+    ];
+  }
+  cats() {
+    return [
+      { slug: 'green', name: 'Green Tea', blurb: 'Fresh, grassy and gently vegetal.' },
+      { slug: 'black', name: 'Black Tea', blurb: 'Fully oxidised, rich and full-bodied.' },
+      { slug: 'white', name: 'White Tea', blurb: 'Delicate, lightly processed and softly sweet.' },
+      { slug: 'herbal', name: 'Herbal Tea', blurb: 'Infusions of flowers, herbs and roots.' },
+      { slug: 'blends', name: 'Specialty Blends', blurb: 'Teas combined with botanicals and spices.' }
+    ];
+  }
+  componentDidMount() {
+    this.navMount();
+    let c = '';
+    try { c = new URLSearchParams(window.location.search).get('category') || window.sessionStorage.getItem('tc_cat') || ''; window.sessionStorage.removeItem('tc_cat'); } catch (e) {}
+    if (c && this.cats().some((x) => x.slug === c)) this.setState({ cat: c });
+  }
+  componentDidUpdate(prev) {
+    if (prev.category !== this.props.category) {
+      const hit = this.cats().find((x) => x.name === this.props.category);
+      this.setState({ cat: hit ? hit.slug : 'all' });
+    }
+  }
+  componentWillUnmount() { this.navUnmount(); clearTimeout(this._send); }
+  openModal(id, trigger) {
+    this._trigger = trigger || null;
+    this.setState({ modal: id, ...this.formInit(), f: { ...this.formInit().f, product: id } });
+  }
+  closeModal() {
+    this.setState({ modal: null });
+    const t = this._trigger;
+    setTimeout(() => { if (t && t.focus) t.focus(); }, 0);
+  }
+  renderVals() {
+    const all = this.products();
+    const cats = this.cats();
+    const counts = (slug) => all.filter((p) => p.cat === slug).length;
+    const live = cats.filter((c) => counts(c.slug) > 0);
+    const shown = this.state.cat === 'all' ? all : all.filter((p) => p.cat === this.state.cat);
+    const cur = cats.find((c) => c.slug === this.state.cat);
+    const catName = (slug) => (cats.find((c) => c.slug === slug) || {}).name || '';
+    const mp = all.find((p) => p.id === this.state.modal) || { name: 'our teas', cls: '', alt: 'Tea' };
+    const sent = all.find((p) => p.id === this.state.f.product);
+    const labels = { name: 'Full name', email: 'Email address', phone: 'Phone number', product: 'Selected tea', message: 'Message' };
+    return {
+      ...this.navVals(),
+      ...this.formVals(['name', 'email', 'phone', 'product', 'message'], false, labels),
+      filters: [{ slug: 'all', name: 'All Teas' }, ...live].map((c) => ({
+        label: c.name,
+        count: c.slug === 'all' ? all.length : counts(c.slug),
+        pressed: this.state.cat === c.slug ? 'true' : 'false',
+        pick: () => this.setState({ cat: c.slug })
+      })),
+      shown: shown.map((p, i) => ({
+        ...p,
+        hid: 'prod-' + p.id,
+        catName: catName(p.cat),
+        delay: Math.min(i, 8) * 70,
+        aria: 'Inquire about ' + p.name,
+        inquire: (e) => this.openModal(p.id, e && e.currentTarget)
+      })),
+      empty: shown.length === 0,
+      showAll: () => this.setState({ cat: 'all' }),
+      liveText: shown.length + (shown.length === 1 ? ' tea' : ' teas') + (cur ? ' · ' + cur.name : ''),
+      catTitle: cur ? cur.name : 'All teas',
+      catBlurb: cur ? cur.blurb + ' (General description; product details to be supplied.)' : 'Browse every tea in the collection, or choose a category to narrow it down.',
+      modalOpen: this.state.modal !== null || this.props.formState !== 'Live form' && this.props.formState !== undefined,
+      mp,
+      mpSent: sent ? sent.name : 'our teas',
+      phoneNote: this.state.f.phone.trim() ? ' or phone' : '',
+      closeModal: () => this.closeModal(),
+      modalBackdrop: (e) => { if (e.target === e.currentTarget) this.closeModal(); },
+      modalKey: (e) => {
+        if (e.key === 'Escape') { e.preventDefault(); this.closeModal(); return; }
+        if (e.key === 'Tab') {
+          const nodes = e.currentTarget.querySelectorAll('button, a[href], input:not([tabindex="-1"]), select, textarea');
+          const first = nodes[0], last = nodes[nodes.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Tea Collective — Contact</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap">
+<style>
+/* The Tea Collective — design tokens
+   forest #465B49 (primary, 6.6:1 on cream) · sage #A8B5A0 · cream #F7F3E9 · oat #E8DDC9 · tea brown #806B54
+   botanical #303B32 (text, 10.5:1) · soft white #FCFAF5 · terracotta #B8755B (decorative only)
+   text-safe variants: brown #6E5A45 (4.9:1 on oat) · terracotta #9A5A43 (4.8:1 on cream) · terracotta on dark #D9A58E */
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F3E9;color:#303B32;font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#303B32}a:hover{color:#465B49}
+p{margin:0}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid #465B49;outline-offset:3px}
+.on-forest :focus-visible,.on-dark :focus-visible{outline-color:#F7F3E9}
+.skip{position:absolute;left:-9999px;top:10px;z-index:100;background:#465B49;color:#F7F3E9;padding:12px 18px;text-decoration:none;font-weight:600}
+.skip:focus{left:10px;color:#F7F3E9}
+.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-0.01em}
+.disp{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:.98;letter-spacing:-0.02em;margin:0}
+.disp em,.h2 em{font-style:italic;color:#465B49}
+.on-forest .disp em,.on-forest .h2 em,.on-dark .disp em,.on-dark .h2 em{color:#E8DDC9}
+.h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.02;letter-spacing:-0.015em;font-size:clamp(38px,4.6vw,68px);margin:14px 0 0}
+.h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.1;margin:0}
+.wrap{width:100%;max-width:1360px;margin:0 auto;padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px)}
+.label{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E5A45}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E5A45}
+.eyebrow::before{content:"";width:28px;height:1px;background:#B8755B;flex:none}
+.on-forest .eyebrow,.on-dark .eyebrow,.eyebrow.light{color:#E8DDC9}
+.lead{font-size:clamp(16px,1.2vw,18px);line-height:1.75;color:#4A5249}
+.on-forest .lead,.on-dark .lead{color:#E3E6DC}
+.hint{font-size:14px;line-height:1.6;color:#5C6158}
+.on-forest{background:#465B49;color:#F7F3E9}
+.on-dark{background:#303B32;color:#F7F3E9}
+.on-forest a,.on-dark a{color:#F7F3E9}
+.oat{background:#E8DDC9}
+.oat .label,.oat .eyebrow{color:#6E5A45}
+.soft{background:#FCFAF5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;background:#465B49;color:#F7F3E9;border:1px solid #465B49;border-radius:2px;font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .35s ease,color .35s ease,border-color .35s ease}
+.btn:hover{background:#303B32;border-color:#303B32;color:#F7F3E9}
+.btn:disabled{opacity:.6;cursor:progress}
+.btn-ghost{background:transparent;color:#303B32;border-color:#303B32}
+.btn-ghost:hover{background:#303B32;color:#F7F3E9}
+.btn-light{background:#F7F3E9;color:#303B32;border-color:#F7F3E9}
+.btn-light:hover{background:#E8DDC9;border-color:#E8DDC9;color:#303B32}
+.btn-ghost-light{background:transparent;color:#F7F3E9;border-color:rgba(247,243,233,.7)}
+.btn-ghost-light:hover{background:#F7F3E9;color:#303B32;border-color:#F7F3E9}
+.arr{display:inline-block;transition:transform .35s ease}
+.btn:hover .arr,.tlink:hover .arr{transform:translateX(4px)}
+.tlink{display:inline-flex;align-items:center;gap:10px;min-height:44px;font:600 13px/1 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#303B32;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/100% 1px no-repeat;transition:background-size .4s ease}
+.tlink:hover{background-size:40% 1px;color:#465B49}
+.on-forest .tlink,.on-dark .tlink{color:#F7F3E9}
+.nav-link{position:relative;text-decoration:none;color:#303B32;font-size:14px;font-weight:500;letter-spacing:.04em;padding:12px 2px;min-height:44px;display:inline-flex;align-items:center}
+.nav-link::after{content:"";position:absolute;left:2px;right:2px;bottom:8px;height:1px;background:#465B49;transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.nav-link:hover::after,.nav-link[aria-current="page"]::after{transform:scaleX(1)}
+.nav-link[aria-current="page"]{color:#465B49;font-weight:600}
+.nav-links{display:flex;gap:clamp(16px,2vw,32px);align-items:center}
+.nav-toggle{display:none}
+@media (max-width:1100px){.nav-links{display:none}.nav-toggle{display:inline-flex}.nav-cta{display:none!important}}
+.icon-btn{width:48px;height:48px;border:1px solid rgba(48,59,50,.35);background:transparent;color:#303B32;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s,color .3s}
+.icon-btn:hover{background:#303B32;color:#F7F3E9}
+.icon-btn.light{border-color:rgba(247,243,233,.55);color:#F7F3E9}
+.icon-btn.light:hover{background:#F7F3E9;color:#303B32}
+.drawer{position:fixed;inset:0;z-index:60;background:rgba(48,59,50,.45);display:flex;justify-content:flex-end}
+.drawer-panel{width:min(440px,100%);height:100%;background:#F7F3E9;padding:20px clamp(22px,5vw,36px) 32px;display:flex;flex-direction:column;overflow-y:auto;animation:slidein .45s cubic-bezier(.2,.7,.2,1) both}
+.mlink{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #E1D7C4;text-decoration:none;color:#303B32;font:500 34px/1.1 "Cormorant Garamond",Georgia,serif;min-height:44px}
+.mlink[aria-current="page"]{color:#465B49;font-style:italic}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+/* Photo placeholders — illustrative only, never presented as real photos of the shop */
+.ph{position:relative;overflow:hidden;background-color:#D9CDB6;background-image:radial-gradient(120% 90% at 20% 15%,rgba(252,250,245,.55),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(128,107,84,.35),transparent 60%);isolation:isolate}
+.ph::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M30 92c10-30 34-48 60-52-6 26-30 48-60 52z' fill='none' stroke='%23303B32' stroke-width='1'/%3E%3Cpath d='M30 92c18-16 34-30 60-52' fill='none' stroke='%23303B32' stroke-width='.8'/%3E%3C/svg%3E");background-size:120px 120px}
+.ph-sage{background-color:#A8B5A0;background-image:radial-gradient(120% 90% at 25% 15%,rgba(252,250,245,.45),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(70,91,73,.45),transparent 60%)}
+.ph-forest{background-color:#465B49;background-image:radial-gradient(110% 90% at 30% 20%,rgba(168,181,160,.35),transparent 60%),radial-gradient(90% 80% at 85% 95%,rgba(48,59,50,.7),transparent 60%)}
+.ph-forest::before{opacity:.18;filter:invert(1)}
+.ph-oat{background-color:#E8DDC9;background-image:radial-gradient(120% 90% at 20% 15%,rgba(252,250,245,.7),transparent 55%),radial-gradient(90% 80% at 85% 90%,rgba(184,117,91,.22),transparent 60%)}
+.ph-brown{background-color:#806B54;background-image:radial-gradient(110% 90% at 25% 15%,rgba(232,221,201,.35),transparent 55%),radial-gradient(90% 80% at 80% 90%,rgba(48,59,50,.55),transparent 60%)}
+.ph-brown::before{opacity:.16;filter:invert(1)}
+.ph-tag{position:absolute;left:14px;bottom:14px;z-index:2;max-width:calc(100% - 28px);background:rgba(252,250,245,.92);color:#303B32;font:600 10.5px/1.35 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:1px}
+.zoom-host{overflow:hidden}
+.zoom{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.zoom-host:hover .zoom,.zoom-host:focus-visible .zoom{transform:scale(1.05)}
+.kb{animation:kb 20s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.06)}}
+.reveal{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.reveal-2{animation:rise 1s .15s cubic-bezier(.2,.7,.2,1) both}
+.reveal-3{animation:rise 1s .3s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.scrollcue{animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(7px);opacity:1}}
+/* Layout helpers */
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,96px);align-items:center}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.g12{grid-template-columns:minmax(0,1fr)}.g12>*{grid-column:auto!important;grid-row:auto!important}}
+.section{padding:clamp(88px,11vw,168px) 0}
+.rule{height:1px;background:#DCCFB8;border:0;margin:0}
+.chip{flex:none;min-height:44px;padding:0 20px;border:1px solid #C9BBA2;background:transparent;color:#303B32;font:500 14px/1 "DM Sans",sans-serif;letter-spacing:.02em;cursor:pointer;border-radius:2px;display:inline-flex;align-items:center;gap:10px;transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:#465B49}
+.chip[aria-pressed="true"]{background:#465B49;border-color:#465B49;color:#F7F3E9}
+.chip .n{font-size:12px;opacity:.75}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px}
+.chips::-webkit-scrollbar{display:none}
+.todo{border:1px dashed #A68B4C;background:rgba(232,221,201,.55);padding:14px 16px;font-size:13.5px;line-height:1.6;color:#4E4433;border-radius:2px}
+.todo-tag{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6E5A45;margin-right:8px}
+.on-forest .todo,.on-dark .todo{background:rgba(252,250,245,.08);border-color:rgba(232,221,201,.55);color:#E8DDC9}
+.on-forest .todo-tag,.on-dark .todo-tag{color:#E8DDC9}
+.sample{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9A5A43;border:1px solid rgba(154,90,67,.45);padding:4px 8px;border-radius:1px}
+/* Forms */
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label{font-size:14px;font-weight:600;color:#303B32}
+.req{color:#9A5A43}
+.input{width:100%;min-height:52px;padding:12px 2px;background:transparent;border:0;border-bottom:1px solid #A89A82;border-radius:0;font:400 16px/1.4 "DM Sans",sans-serif;color:#303B32;transition:border-color .3s,box-shadow .3s}
+.input:hover{border-bottom-color:#465B49}
+.input:focus{outline:none;border-bottom-color:#465B49;box-shadow:0 2px 0 0 #465B49}
+.input[aria-invalid="true"]{border-bottom-color:#A3412C;box-shadow:0 2px 0 0 #A3412C}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23303B32' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:28px;cursor:pointer}
+textarea.input{min-height:132px;resize:vertical;border:1px solid #A89A82;padding:14px 16px;border-radius:2px}
+textarea.input:focus{box-shadow:0 0 0 1px #465B49;border-color:#465B49}
+.err{font-size:13.5px;color:#A3412C;line-height:1.5;font-weight:500;display:flex;gap:8px;align-items:flex-start}
+.err::before{content:"!";flex:none;width:16px;height:16px;border-radius:50%;background:#A3412C;color:#FCFAF5;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.notice{padding:16px 18px;border-left:2px solid #465B49;background:#FCFAF5;font-size:14.5px;line-height:1.6}
+.notice-err{border-left-color:#A3412C;background:#FBF1EC}
+.notice-warn{border:1px dashed #A68B4C;background:rgba(232,221,201,.55)}
+/* Dialog + lightbox */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(48,59,50,.55);display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,40px)}
+.modal-panel{width:min(980px,100%);max-height:100%;overflow-y:auto;background:#F7F3E9;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);animation:rise .45s ease both}
+@media (max-width:820px){.modal{align-items:flex-end;padding:0}.modal-panel{grid-template-columns:minmax(0,1fr);max-height:94vh}.modal-art{display:none}}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(32,40,34,.96);color:#F7F3E9;display:flex;flex-direction:column;padding:clamp(12px,2vw,28px)}
+.lb-side{flex:none}
+.lb-mobile{display:none}
+@media (max-width:700px){.lb-side{display:none}.lb-mobile{display:inline-flex}}
+/* Footer */
+.foot a{color:#E3E6DC;text-decoration:none}.foot a:hover{color:#FCFAF5;text-decoration:underline;text-underline-offset:4px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.sticky-cta{display:none}
+@media (max-width:767px){.sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;gap:8px;padding:10px 12px;background:#F7F3E9;border-top:1px solid #DCCFB8}.sticky-cta .btn{flex:1;min-height:48px;padding:0 12px;letter-spacing:.08em}.site-pad{padding-bottom:70px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.leaf-deco{position:absolute;pointer-events:none;color:#465B49;opacity:.55}
+@media (max-width:767px){.leaf-deco{display:none}}
+@media (max-width:374px){.btn{padding:0 18px;letter-spacing:.08em}.chip{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.form-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:560px){.form-2{grid-template-columns:minmax(0,1fr)}}
+.ct-info{display:flex;flex-direction:column;border-top:1px solid #303B32}
+.ct-block{padding:26px 0;border-bottom:1px solid #DCCFB8}
+.ct-val{display:inline-block;font-size:clamp(24px,2.2vw,30px);line-height:1.25;color:#303B32;min-height:44px}
+.ct-form{background:#FCFAF5;padding:clamp(26px,4vw,56px);border:1px solid #E1D7C4}
+.ct-map{position:relative;display:block;aspect-ratio:16/10;border:1px solid #D2C4AB;background:#EFE7D7}
+.ct-map-tag{position:absolute;left:16px;bottom:16px;background:#FCFAF5;padding:9px 12px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#303B32}
+.ct-final{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(40px,5vw,64px);border-top:1px solid rgba(247,243,233,.3)}
+.ct-final a{display:flex;flex-direction:column;gap:12px;padding:28px 28px 28px 0;text-decoration:none;position:relative;min-height:44px}
+.ct-final a+a{padding-left:28px;border-left:1px solid rgba(247,243,233,.3)}
+.ct-final .serif{font-size:clamp(26px,2.8vw,40px);color:#FCFAF5}
+.ct-final .arr{position:absolute;right:28px;top:30px;color:#E8DDC9}
+.ct-final a:hover .arr{transform:translateX(6px)}
+@media (max-width:900px){.ct-form{margin-top:28px}}
+@media (max-width:700px){.ct-final{grid-template-columns:minmax(0,1fr)}.ct-final a+a{padding-left:0;border-left:0;border-top:1px solid rgba(247,243,233,.3)}}
+
+</style>
+</helmet>
+<div class="site-pad">
+<a class="skip" href="#main">Skip to content</a>
+<header style="position: sticky; top: 0; z-index: 40; background: {{headerBg}}; border-bottom: 1px solid {{headerBorder}}; transition: background .4s ease, border-color .4s ease">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; height: {{headerH}}px; transition: height .35s ease">
+<a href="Main.dc.html" aria-label="The Tea Collective, home" style="text-decoration: none; display: flex; align-items: center; gap: 12px; color: #303B32">
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="16" stroke="#465B49" stroke-width="1"></circle><path d="M10 24c2-8 7-12 15-14-1 8-6 13-15 14z" fill="#465B49"></path><path d="M10 24c4-4 8-8 15-14" stroke="#F7F3E9" stroke-width="1"></path></svg>
+<span style="display: flex; flex-direction: column; line-height: 1">
+<span style="font: 600 24px/1 'Cormorant Garamond', Georgia, serif; letter-spacing: .01em">The Tea Collective</span>
+<span style="font-size: 9.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: #6E5A45; margin-top: 6px">Boutique tea · Santa Ana</span>
+</span>
+</a>
+<nav aria-label="Primary" class="nav-links">
+<a class="nav-link" href="Main.dc.html">Home</a>
+<a class="nav-link" href="Collection.dc.html">Tea Collection</a>
+<a class="nav-link" href="About.dc.html">About</a>
+<a class="nav-link" href="Experience.dc.html">Tea Experience</a>
+<a class="nav-link" href="Gallery.dc.html">Gallery</a>
+<a class="nav-link" href="Contact.dc.html" aria-current="page">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px">
+<a class="btn nav-cta" href="Collection.dc.html" style="min-height: 46px; padding: 0 22px">Explore Our Teas</a>
+<button type="button" class="icon-btn nav-toggle" aria-label="Open menu" aria-expanded="{{menuExpanded}}" aria-controls="site-drawer" onClick="{{openMenu}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h18M3 16h18"></path></svg></button>
+</div>
+</div>
+</header>
+<sc-if value="{{menu}}" hint-placeholder-val="{{false}}">
+<div class="drawer" onClick="{{backdropClose}}">
+<div id="site-drawer" class="drawer-panel" role="dialog" aria-modal="true" aria-label="Site menu" onKeyDown="{{menuKey}}">
+<div style="display: flex; justify-content: space-between; align-items: center; min-height: 60px">
+<span class="label">Menu</span>
+<button type="button" class="icon-btn" autoFocus="{{true}}" aria-label="Close menu" onClick="{{closeMenu}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button>
+</div>
+<nav aria-label="Mobile" style="display: flex; flex-direction: column; margin-top: 12px">
+<a class="mlink" href="Main.dc.html">Home<span class="label" aria-hidden="true">01</span></a>
+<a class="mlink" href="Collection.dc.html">Tea Collection<span class="label" aria-hidden="true">02</span></a>
+<a class="mlink" href="About.dc.html">About<span class="label" aria-hidden="true">03</span></a>
+<a class="mlink" href="Experience.dc.html">Tea Experience<span class="label" aria-hidden="true">04</span></a>
+<a class="mlink" href="Gallery.dc.html">Gallery<span class="label" aria-hidden="true">05</span></a>
+<a class="mlink" href="Contact.dc.html" aria-current="page">Contact<span class="label" aria-hidden="true">06</span></a>
+</nav>
+<div style="margin-top: auto; padding-top: 32px; display: flex; flex-direction: column; gap: 10px">
+<a class="btn" href="Collection.dc.html" style="width: 100%">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn btn-ghost" href="Contact.dc.html" style="width: 100%">Contact Us</a>
+<p class="hint" style="text-align: center; margin-top: 8px">9713 Cedar Street, Santa Ana, CA 92701</p>
+</div>
+</div>
+</div>
+</sc-if>
+<main id="main">
+
+<section aria-labelledby="page-h" style="position: relative; overflow: hidden; padding: clamp(40px, 5vw, 64px) 0 clamp(64px, 8vw, 104px)">
+<svg width="420" height="420" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="right: -70px; top: 40px; opacity: .5"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<div class="wrap" style="position: relative">
+<nav aria-label="Breadcrumb"><ol style="list-style: none; display: flex; gap: 10px; margin: 0; padding: 0; font-size: 13px; letter-spacing: .06em; color: #5C6158"><li><a href="Main.dc.html" style="color: inherit">Home</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: #465B49; font-weight: 600">Contact</li></ol></nav>
+<div class="g12" style="margin-top: clamp(36px, 5vw, 72px); align-items: end">
+<h1 id="page-h" class="disp reveal" style="grid-column: span 8; font-size: clamp(56px, 8.6vw, 140px)">We’d Love to <em>Hear From You.</em></h1>
+<p class="lead reveal-2" style="grid-column: 9 / span 4">Questions about our teas or planning a visit? Get in touch.</p>
+</div>
+</div>
+</section>
+
+<section aria-label="Contact details and form" style="padding-bottom: clamp(88px, 11vw, 152px)">
+<div class="wrap g12" style="align-items: start">
+<div class="ct-info" style="grid-column: span 5">
+<div class="ct-block">
+<p class="label" style="display: flex; align-items: center; gap: 10px"><span style="color: #465B49"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span>Address</p>
+<div style="margin-top: 14px"><address class="serif ct-val" style="font-style: normal">9713 Cedar Street<br>Santa Ana, CA 92701, USA</address></div>
+<div style="margin-top: 10px"><a class="tlink" href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">Open in Maps <span class="arr" aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a></div>
+</div><div class="ct-block">
+<p class="label" style="display: flex; align-items: center; gap: 10px"><span style="color: #465B49"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span>Phone</p>
+<div style="margin-top: 14px"><a class="serif ct-val" href="tel:+19187316357" style="text-decoration: none">+1 (918) 731-6357</a></div>
+<div style="margin-top: 10px"><a class="tlink" href="tel:+19187316357">Call the Shop <span class="arr" aria-hidden="true">→</span></a></div>
+</div><div class="ct-block">
+<p class="label" style="display: flex; align-items: center; gap: 10px"><span style="color: #465B49"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"></rect><path d="M3 7l9 6 9-6"></path></svg></span>Email</p>
+<div style="margin-top: 14px"><a class="serif ct-val" href="mailto:theteacollective@hotmail.com" style="text-decoration: none; word-break: break-all">theteacollective@hotmail.com</a></div>
+<div style="margin-top: 10px"><a class="tlink" href="mailto:theteacollective@hotmail.com?subject=Hello%20from%20the%20website">Write to Us <span class="arr" aria-hidden="true">→</span></a></div>
+</div><div class="ct-block">
+<p class="label" style="display: flex; align-items: center; gap: 10px"><span style="color: #465B49"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Store hours</p>
+<div style="margin-top: 14px"><p class="serif ct-val">Contact us for current store hours.</p></div>
+<div style="margin-top: 10px"><p class="hint">Opening hours will appear here once confirmed by the shop.</p></div>
+</div>
+</div>
+<div style="grid-column: 7 / span 6" class="ct-form">
+<p class="eyebrow">Send a message</p>
+<h2 class="h2" style="font-size: clamp(34px, 3.4vw, 50px); margin-bottom: 32px">Tell us <em>what you’re looking for.</em></h2>
+<sc-if value="{{hasProduct}}" hint-placeholder-val="{{false}}"><p class="notice" style="margin-bottom: 24px">You’re asking about <strong>{{productName}}</strong>. We’ve filled that in for you.</p></sc-if>
+<div aria-live="polite" role="status">
+<sc-if value="{{isSuccess}}" hint-placeholder-val="{{false}}">
+<div style="animation: rise .5s ease both; padding: 8px 0">
+<span style="width: 56px; height: 56px; border: 1px solid #465B49; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #465B49"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 19c1.5-7 6-11.5 14-14-1 8-6 13-14 14z"></path><path d="M5 19c4-4 8-8.5 14-14"></path></svg></span>
+<p class="disp" style="font-size: clamp(34px, 3.4vw, 46px); margin-top: 20px">Thank you, your message is on its way.</p>
+<p class="lead" style="margin-top: 14px">The Tea Collective will reply to <strong>{{{{f.email}}}}</strong>{{{{phoneNote}}}} as soon as possible.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px"><a class="btn" href="Collection.dc.html">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a><button type="button" class="btn btn-ghost" onClick="{{resetForm}}">Send Another Message</button></div>
+</div>
+</sc-if>
+<sc-if value="{{isFailure}}" hint-placeholder-val="{{false}}">
+<div role="alert" class="notice notice-err" style="margin-bottom: 24px"><p style="font-weight: 600; color: #7E3221">Your message couldn’t be sent.</p><p class="hint" style="margin-top: 6px">Your details are still here. Please try again, or email <a href="mailto:theteacollective@hotmail.com">theteacollective@hotmail.com</a> or call <a href="tel:+19187316357">+1 (918) 731-6357</a>.</p></div>
+</sc-if>
+<sc-if value="{{isUnsent}}" hint-placeholder-val="{{false}}">
+<div class="notice notice-warn" style="margin-bottom: 24px"><p style="font-weight: 600">Your message looks complete, but it has not been sent.</p><p class="hint" style="margin-top: 6px">Online inquiries aren’t connected yet. Please email <a href="mailto:theteacollective@hotmail.com">theteacollective@hotmail.com</a> or call <a href="tel:+19187316357">+1 (918) 731-6357</a>, and we’ll be happy to help.</p><p style="margin-top: 10px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #6E5A45">Developer note · connect the inquiry endpoint here</p></div>
+</sc-if>
+</div>
+<sc-if value="{{showForm}}" hint-placeholder-val="{{true}}">
+<form noValidate="{{true}}" onSubmit="{{onSubmit}}" aria-label="Contact form" style="display: flex; flex-direction: column; gap: 24px">
+<sc-if value="{{isInvalid}}" hint-placeholder-val="{{false}}"><div role="alert" class="notice notice-err" style="font-size: 14px; color: #7E3221; font-weight: 600">{{errSummary}}</div></sc-if>
+<div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden"><label for="fld-website">Website</label><input id="fld-website" name="website" type="text" tabindex="-1" autocomplete="off" value="{{f.website}}" onChange="{{onField}}"></div>
+<div class="form-2"><div class="field"><label for="fld-name">Full name <span class="req" aria-hidden="true">*</span></label><input id="fld-name" name="name" type="text" class="input" autocomplete="name" required="{{true}}" maxLength="120" aria-invalid="{{fx.name.invalid}}" aria-describedby="{{fx.name.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.name}}"><sc-if value="{{fx.name.has}}" hint-placeholder-val="{{false}}"><p id="name-err" class="err">{{fx.name.err}}</p></sc-if></div><div class="field"><label for="fld-email">Email address <span class="req" aria-hidden="true">*</span></label><input id="fld-email" name="email" type="email" class="input" autocomplete="email" inputMode="email" required="{{true}}" maxLength="160" aria-invalid="{{fx.email.invalid}}" aria-describedby="{{fx.email.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.email}}"><sc-if value="{{fx.email.has}}" hint-placeholder-val="{{false}}"><p id="email-err" class="err">{{fx.email.err}}</p></sc-if></div></div><div class="field"><label for="fld-phone">Phone number <span style="font-weight: 400; color: #5C6158">(optional)</span></label><input id="fld-phone" name="phone" type="tel" class="input" autocomplete="tel" inputMode="tel" maxLength="30" aria-invalid="{{fx.phone.invalid}}" aria-describedby="{{fx.phone.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.phone}}"><sc-if value="{{fx.phone.has}}" hint-placeholder-val="{{false}}"><p id="phone-err" class="err">{{fx.phone.err}}</p></sc-if><p id="phone-hint" class="hint" style="font-size: 13px">Only if you’d prefer a call back.</p></div>
+<div class="form-2">
+<div class="field"><label for="fld-subject">Subject <span class="req" aria-hidden="true">*</span></label><select id="fld-subject" name="subject" class="input" required="{{true}}" aria-invalid="{{fx.subject.invalid}}" aria-describedby="{{fx.subject.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.subject}}"><option value="">Choose a subject</option><option value="general">General Inquiry</option><option value="collection">Tea Collection Inquiry</option><option value="product">Product Information</option><option value="visit">Store Visit</option><option value="other">Other</option></select><sc-if value="{{fx.subject.has}}" hint-placeholder-val="{{false}}"><p id="subject-err" class="err">{{fx.subject.err}}</p></sc-if></div>
+<div class="field"><label for="fld-product">Tea you’re asking about <span style="font-weight: 400; color: #5C6158">(optional)</span></label><select id="fld-product" name="product" class="input" value="{{f.product}}" onChange="{{onField}}"><option value="">No particular tea</option><option value="g1">Sample Green Tea No. 1 (Green Tea)</option><option value="b1">Sample Black Tea No. 1 (Black Tea)</option><option value="h1">Sample Herbal Infusion No. 1 (Herbal Tea)</option><option value="w1">Sample White Tea No. 1 (White Tea)</option><option value="s1">Sample Specialty Blend No. 1 (Specialty Blends)</option><option value="g2">Sample Green Tea No. 2 (Green Tea)</option><option value="b2">Sample Black Tea No. 2 (Black Tea)</option><option value="h2">Sample Herbal Infusion No. 2 (Herbal Tea)</option><option value="s2">Sample Specialty Blend No. 2 (Specialty Blends)</option><option value="general">Not sure yet / general question</option></select></div>
+</div>
+<div class="field"><label for="fld-message">Message <span class="req" aria-hidden="true">*</span></label><textarea id="fld-message" name="message" class="input" rows="5" maxLength="1500" required="{{true}}" aria-invalid="{{fx.message.invalid}}" aria-describedby="{{fx.message.desc}}" onChange="{{onField}}" onBlur="{{onBlur}}" value="{{f.message}}" placeholder="How can we help?"></textarea><sc-if value="{{fx.message.has}}" hint-placeholder-val="{{false}}"><p id="message-err" class="err">{{fx.message.err}}</p></sc-if><p class="hint" style="font-size: 13px; text-align: right" aria-hidden="true">{{msgCount}}</p></div>
+<p class="hint" style="display: flex; gap: 10px; align-items: flex-start"><span style="color: #465B49; flex: none; margin-top: 2px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c1.5-7 6-11.5 14-14-1 8-6 13-14 14z"></path><path d="M5 19c4-4 8-8.5 14-14"></path></svg></span><span>Your details are used only to reply to your message. We won’t add you to a mailing list.</span></p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px">
+<button type="submit" class="btn" disabled="{{isSending}}" aria-busy="{{busy}}" style="min-width: 220px">{{submitLabel}} <span class="arr" aria-hidden="true">→</span></button>
+<p class="hint"><span class="req" aria-hidden="true">*</span> Required</p>
+</div>
+</form>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="map-h" class="oat" style="padding: clamp(80px, 10vw, 140px) 0">
+<div class="wrap g12" style="align-items: center">
+<div style="grid-column: span 4">
+<p class="eyebrow">Location</p>
+<h2 id="map-h" class="h2" style="font-size: clamp(38px, 4vw, 60px)">Find us on <em>Cedar Street.</em></h2>
+<p class="lead" style="margin-top: 18px; color: #4E4A3E">9713 Cedar Street, Santa Ana, CA 92701, USA</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px">
+<a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">Get Directions <span class="arr" aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a>
+<a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">View Map<span class="sr"> (opens in a new tab)</span></a>
+</div>
+</div>
+<a class="ct-map zoom-host" href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer" aria-label="Map preview of 9713 Cedar Street, Santa Ana. Opens Google Maps in a new tab" style="grid-column: 6 / span 7">
+<svg class="zoom" viewBox="0 0 700 440" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0">
+<rect width="700" height="440" fill="#EFE7D7"></rect>
+<g stroke="#FCFAF5" stroke-width="16" fill="none"><path d="M-20 300 L720 250"></path><path d="M180 -20 L230 460"></path><path d="M470 -20 L440 460"></path></g>
+<g stroke="#FCFAF5" stroke-width="7" fill="none"><path d="M-20 120 L720 90"></path><path d="M-20 390 L720 360"></path><path d="M60 -20 L100 460"></path><path d="M600 -20 L580 460"></path><path d="M330 -20 L340 460"></path></g>
+<path d="M500 60 C560 80 620 40 700 70 L700 0 L480 0 Z" fill="#A8B5A0" opacity=".55"></path>
+<path d="M0 420 C80 380 140 440 240 410 L240 440 L0 440 Z" fill="#A8B5A0" opacity=".55"></path>
+<text x="248" y="236" font-family="DM Sans, sans-serif" font-size="13" letter-spacing="2.5" fill="#6E5A45" transform="rotate(-4 248 236)">CEDAR STREET</text>
+<g transform="translate(336 226)"><circle r="34" fill="#465B49" opacity=".14"></circle><path d="M0 18s-16-14-16-26a16 16 0 0 1 32 0C16 4 0 18 0 18z" fill="#465B49" transform="translate(0 -18)"></path><circle cy="-26" r="5.5" fill="#F7F3E9"></circle></g>
+</svg>
+<span class="ct-map-tag">Map preview · 9713 Cedar Street ↗</span>
+</a>
+</div>
+</section>
+
+<section aria-labelledby="cta-h" class="on-forest" style="padding: clamp(88px, 11vw, 160px) 0; position: relative; overflow: hidden">
+<svg width="400" height="400" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width="1" stroke-linecap="round" aria-hidden="true" class="leaf-deco" style="right: 4%; bottom: -80px; opacity: .3"><path d="M30 185C52 120 92 62 150 18"></path><path d="M58 132c-26-6-38-24-38-46 24 4 38 22 38 46z"></path><path d="M58 132C46 116 34 100 20 86"></path><path d="M80 98c-4-26 8-46 30-56 6 24-6 44-30 56z"></path><path d="M80 98c8-18 18-36 30-56"></path><path d="M104 70c18-18 40-20 58-10-14 20-36 24-58 10z"></path><path d="M104 70c18-6 38-10 58-10"></path><path d="M44 158c22 4 42-6 52-26-24-4-44 6-52 26z"></path></svg>
+<div class="wrap" style="position: relative">
+<h2 id="cta-h" class="disp" style="font-size: clamp(64px, 10vw, 168px); color: #FCFAF5">Let’s Talk <em>Tea.</em></h2>
+<div class="ct-final">
+<a href="tel:+19187316357"><span class="label" style="color: #E8DDC9">Call</span><span class="serif">+1 (918) 731-6357</span><span class="arr" aria-hidden="true">→</span></a>
+<a href="mailto:theteacollective@hotmail.com"><span class="label" style="color: #E8DDC9">Email</span><span class="serif" style="word-break: break-all">theteacollective@hotmail.com</span><span class="arr" aria-hidden="true">→</span></a>
+</div>
+</div>
+</section>
+
+</main>
+<footer class="foot on-dark" style="padding: clamp(72px,9vw,112px) 0 36px; position: relative; overflow: hidden">
+<svg class="leaf-deco" width="320" height="320" viewBox="0 0 200 200" fill="none" stroke="#A8B5A0" stroke-width=".8" aria-hidden="true" style="right: -40px; top: -30px; opacity: .25"><path d="M40 170C60 90 110 50 180 30c-14 70-60 118-140 140z"></path><path d="M40 170c40-40 80-84 140-140"></path><path d="M80 128c-2-18 2-34 10-46M110 98c-2-20 4-38 14-50M70 140c18 2 34-2 48-10M100 112c20 2 38-4 52-14"></path></svg>
+<div class="wrap" style="position: relative">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; padding-bottom: 52px; border-bottom: 1px solid rgba(247,243,233,.16)">
+<div style="flex: 1 1 320px; max-width: 420px">
+<p style="font: 500 38px/1 'Cormorant Garamond', Georgia, serif; color: #FCFAF5">The Tea Collective</p>
+<p style="margin: 16px 0 26px; line-height: 1.75; font-size: 15px; color: #D5DBCF">A boutique tea shop in Santa Ana, California. Discover the art of slowing down, one cup at a time.</p>
+<a class="btn btn-light" href="Collection.dc.html">Explore Our Teas <span class="arr" aria-hidden="true">→</span></a>
+</div>
+<nav aria-label="Footer" style="flex: 0 1 170px">
+<p class="label" style="color: #D9A58E; margin-bottom: 18px">Explore</p>
+<ul>
+<li><a href="Main.dc.html">Home</a></li>
+<li><a href="Collection.dc.html">Tea Collection</a></li>
+<li><a href="About.dc.html">About</a></li>
+<li><a href="Experience.dc.html">Tea Experience</a></li>
+<li><a href="Gallery.dc.html">Gallery</a></li>
+<li><a href="Contact.dc.html">Contact</a></li>
+</ul>
+</nav>
+<div style="flex: 0 1 300px">
+<p class="label" style="color: #D9A58E; margin-bottom: 18px">Visit &amp; contact</p>
+<address style="font-style: normal; line-height: 1.75; color: #E3E6DC; font-size: 15px">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=9713+Cedar+Street%2C+Santa+Ana%2C+CA+92701%2C+USA" target="_blank" rel="noopener noreferrer">9713 Cedar Street<br>Santa Ana, CA 92701, USA<span class="sr"> (opens Google Maps in a new tab)</span></a><br>
+<a href="tel:+19187316357" style="display: inline-flex; min-height: 40px; align-items: center">+1 (918) 731-6357</a><br>
+<a href="mailto:theteacollective@hotmail.com" style="display: inline-flex; min-height: 40px; align-items: center; word-break: break-all">theteacollective@hotmail.com</a>
+</address>
+<p style="margin-top: 12px; font-size: 14px; color: #C2CABD">Contact us for current store hours.</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 28px; font-size: 13px; color: #C2CABD">
+<p>© 2026 The Tea Collective. All rights reserved.</p>
+<p>Social links appear here once official accounts are supplied.</p>
+</div>
+</div>
+</footer>
+<div class="sticky-cta" role="region" aria-label="Quick actions">
+<a class="btn" href="Collection.dc.html">Our Teas</a>
+<a class="btn btn-ghost" href="Contact.dc.html">Contact</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"formState":{"editor":"enum","options":["Live form","Not connected (no backend)","Success (with backend)","Error"],"default":"Live form","section":"Contact form"},"$preview":{"width":1440,"height":4200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { menu: false, scrolled: false, ...this.formInit() };
+  }
+  navMount() {
+  this._onScroll = () => {
+    const s = window.scrollY > 24;
+    if (s !== !!this.state.scrolled) this.setState({ scrolled: s });
+    if (this.onScrollExtra) this.onScrollExtra();
+  };
+  window.addEventListener('scroll', this._onScroll, { passive: true });
+}
+navUnmount() {
+  if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+}
+navVals() {
+  return {
+    menu: !!this.state.menu,
+    menuExpanded: this.state.menu ? 'true' : 'false',
+    openMenu: () => this.setState({ menu: true }),
+    closeMenu: () => this.setState({ menu: false }),
+    backdropClose: (e) => { if (e.target === e.currentTarget) this.setState({ menu: false }); },
+    menuKey: (e) => { if (e.key === 'Escape') this.setState({ menu: false }); },
+    headerH: this.state.scrolled ? 68 : 88,
+    headerBg: this.state.scrolled ? 'rgba(247,243,233,0.97)' : '#F7F3E9',
+    headerBorder: this.state.scrolled ? '#DCCFB8' : 'transparent'
+  };
+}
+
+  formInit() {
+  return { f: { name: '', email: '', phone: '', product: '', subject: '', message: '', website: '' }, seen: {}, submitted: false, status: 'idle' };
+}
+validateForm(f, needSubject) {
+  const e = {};
+  if (f.name.trim().length < 2) e.name = 'Please enter your name.';
+  if (!f.email.trim()) e.email = 'Please enter your email address.';
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = 'Enter an email address like name@example.com.';
+  const d = f.phone.replace(/\D/g, '');
+  if (f.phone.trim() && (d.length < 10 || d.length > 15)) e.phone = 'Enter a phone number with 10 to 15 digits, or leave it blank.';
+  if (needSubject && !f.subject) e.subject = 'Choose what your message is about.';
+  if (!needSubject && !f.product) e.product = 'Choose the tea you’re asking about.';
+  if (f.message.trim().length < 10) e.message = 'Please write a short message (at least 10 characters).';
+  else if (f.message.length > 1500) e.message = 'Please keep your message under 1,500 characters.';
+  return e;
+}
+formVals(order, needSubject, labels) {
+  const f = this.state.f;
+  const errs = this.validateForm(f, needSubject);
+  const fx = {};
+  order.forEach((k) => {
+    const m = (this.state.submitted || this.state.seen[k]) && errs[k] ? errs[k] : '';
+    fx[k] = { err: m, has: !!m, invalid: m ? 'true' : 'false', desc: m ? k + '-err' : (k === 'phone' ? 'phone-hint' : '') };
+  });
+  const pv = this.props.formState;
+  const status = pv === 'Success (with backend)' ? 'success' : pv === 'Error' ? 'failure' : pv === 'Not connected (no backend)' ? 'unsent' : this.state.status;
+  const bad = order.filter((k) => errs[k]);
+  const setF = (patch) => this.setState({ f: { ...this.state.f, ...patch }, status: ['unsent', 'failure'].includes(this.state.status) ? 'idle' : this.state.status });
+  return {
+    f, fx,
+    onField: (e) => setF({ [e.target.name]: e.target.value }),
+    onBlur: (e) => this.setState({ seen: { ...this.state.seen, [e.target.name]: true } }),
+    isInvalid: status === 'invalid' && bad.length > 0,
+    errSummary: (bad.length === 1 ? 'Please check 1 field: ' : 'Please check ' + bad.length + ' fields: ') + bad.map((k) => labels[k]).join(', ') + '.',
+    isSending: status === 'sending',
+    isUnsent: status === 'unsent',
+    isSuccess: status === 'success',
+    isFailure: status === 'failure',
+    showForm: status !== 'success',
+    busy: status === 'sending' ? 'true' : 'false',
+    submitLabel: status === 'sending' ? 'Sending…' : 'Send Inquiry',
+    msgCount: f.message.length + ' / 1500',
+    resetForm: () => this.setState({ ...this.formInit(), f: { ...this.formInit().f, product: this.state.f.product } }),
+    onSubmit: (e) => {
+      e.preventDefault();
+      if (this.state.status === 'sending') return;
+      if (this.state.f.website) return; // honeypot
+      const er = this.validateForm(this.state.f, needSubject);
+      const first = order.find((k) => er[k]);
+      if (first) {
+        this.setState({ submitted: true, status: 'invalid' });
+        setTimeout(() => { const el = document.getElementById('fld-' + first); if (el) el.focus(); }, 0);
+        return;
+      }
+      this.setState({ submitted: true, status: 'sending' });
+      clearTimeout(this._send);
+      // INTEGRATION POINT: no inquiry backend was supplied. Replace this timeout with a POST to the shop's
+      // inquiry endpoint and set status to 'success' or 'failure' from the real response. Never show success without one.
+      this._send = setTimeout(() => this.setState({ status: 'unsent' }), 900);
+    }
+  };
+}
+
+  products() {
+    return { g1: 'Sample Green Tea No. 1', b1: 'Sample Black Tea No. 1', h1: 'Sample Herbal Infusion No. 1', w1: 'Sample White Tea No. 1', s1: 'Sample Specialty Blend No. 1',
+      g2: 'Sample Green Tea No. 2', b2: 'Sample Black Tea No. 2', h2: 'Sample Herbal Infusion No. 2', s2: 'Sample Specialty Blend No. 2' };
+  }
+  componentDidMount() {
+    this.navMount();
+    // Product hand-off from the Home and Collection pages (production: ?product=<id>).
+    let p = '';
+    try { p = new URLSearchParams(window.location.search).get('product') || window.sessionStorage.getItem('tc_product') || ''; window.sessionStorage.removeItem('tc_product'); } catch (e) {}
+    if (p && this.products()[p]) this.setState({ f: { ...this.state.f, product: p, subject: 'product' } });
+  }
+  componentWillUnmount() { this.navUnmount(); clearTimeout(this._send); }
+  renderVals() {
+    const labels = { name: 'Full name', email: 'Email address', phone: 'Phone number', subject: 'Subject', message: 'Message' };
+    const pn = this.products()[this.state.f.product];
+    return {
+      ...this.navVals(),
+      ...this.formVals(['name', 'email', 'phone', 'subject', 'message'], true, labels),
+      hasProduct: !!pn && this.state.status !== 'success' && this.props.formState !== 'Success (with backend)',
+      productName: pn || '',
+      phoneNote: this.state.f.phone.trim() ? ' or by phone' : ''
+    };
+  }
+}
+</script>
+</body>
+</html>
